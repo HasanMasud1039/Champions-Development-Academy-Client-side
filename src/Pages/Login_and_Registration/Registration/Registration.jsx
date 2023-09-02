@@ -27,7 +27,7 @@ const Registration = () => {
                 updateUserProfile(data.name, data.photoURL, data?.contact, data?.address)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email, photo: data.photoURL, contact: data?.contact, address: data?.address }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://champions-development-academy-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

@@ -23,7 +23,7 @@ const PaymentCards = () => {
                 {
                     cards.map(card => (
                         <div className="card glass h-[130px] p-1">
-                            <figure><Link><img className='h-[100px] w-[200px] rounded-xl object-contain ' src={card.cardImage} alt="car!" /></Link></figure>
+                            <figure><Link><img className='h-[100px] md:w-[200px]  rounded-xl object-contain ' src={card.cardImage} alt="car!" /></Link></figure>
                         </div>
                     ))
                 }

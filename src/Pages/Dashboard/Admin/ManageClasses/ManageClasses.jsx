@@ -62,7 +62,7 @@ const ManageClasses = () => {
     };
 
     const handleApproved = (id) => {
-        fetch(`http://localhost:5000/class/approved/${id}`, {
+        fetch(`https://champions-development-academy-server.vercel.app/class/approved/${id}`, {
             method: "PATCH",
         })
             .then((res) => res.json())
@@ -79,7 +79,7 @@ const ManageClasses = () => {
     };
 
     const handleDenyed = (id) => {
-        fetch(`http://localhost:5000/class/denied/${id}`, {
+        fetch(`https://champions-development-academy-server.vercel.app/class/denied/${id}`, {
             method: "PATCH",
         })
             .then((res) => res.json())

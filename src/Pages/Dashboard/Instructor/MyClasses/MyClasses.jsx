@@ -17,8 +17,6 @@ const MyClasses = () => {
             const res = await axiosSecure.get(
                 `/users/instructor/class/${user.email}`
             );
-
-            // console.log("this is Instructor");
             return res.data;
         },
     });
@@ -26,13 +24,6 @@ const MyClasses = () => {
     console.log(classes);
 
     const handleRemoveClass= (id) => {
-        // console.log("delete id: ", id);
-        // axiosSecure
-        // .delete(`/users/instructor/class/${id}`)
-        // .then((res) => {
-        //      console.log("deleted class", res.data);
-        //     //TODO
-        //   });/////////////
 
           Swal.fire({
             title: 'Are you sure?',
@@ -44,7 +35,7 @@ const MyClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/instructor/class/${id}`, {
+                fetch(`https://champions-development-academy-server.vercel.app/users/instructor/class/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

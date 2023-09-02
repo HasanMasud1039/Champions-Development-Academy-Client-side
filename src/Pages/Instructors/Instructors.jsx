@@ -10,7 +10,7 @@ const Instructors = () => {
     console.log(instructors)
     return (
         <div>
-                        <Helmet>
+            <Helmet>
                 <title>Instructors | Champion's Development academy</title>
             </Helmet>
             <div className='py-4'>
@@ -44,7 +44,7 @@ const Instructors = () => {
                                 <div className="modal-box grid grid-cols-2 gap-4">
                                     <div>
                                         <img className='rounded-lg mb-4 w-full h-[250px]' src={instructor?.imageURL || instructor?.photo} alt="" />
-                                        <p className="font-bold text-xl mb-2">{instructor?.name }</p>
+                                        <p className="font-bold text-xl mb-2">{instructor?.name}</p>
                                         <p> <span className='font-bold'>Age: </span>{instructor?.age} years</p>
                                         <p> <span className='font-bold'>Experience: </span> {instructor?.experience}</p>
                                     </div>

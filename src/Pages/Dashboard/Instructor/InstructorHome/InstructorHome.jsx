@@ -66,87 +66,86 @@ const InstructorHome = () => {
                 <title>Instructor Home | Champion's Development academy</title>
             </Helmet>
             <div>
-                <p className='uppercase text-4xl text-center py-4 font-bold'>Instructor Profile</p>
+                <p className='uppercase md:text-4xl md:text-center py-4 font-bold'>Instructor Profile</p>
             </div>
-            <div>
-                <div className="hero">
-                    <div className="hero-content w-full">
-                        <div className="card  w-full shadow-2xl border-4">
-                            <form onSubmit={handleUpdate}>
-                                <div className='flex'>
-                                    <div className='card-body'>
-                                        <div className="form-control">
+            <div className="hero">
+                    <div className="md:hero-content md:w-full   w-[99%]">
+                        <div className="card  md:w-full w-[60%] shadow-2xl bg-lime-100 border-4">
+                            <form onSubmit={handleUpdate} className="md:card-body  w-[80%]">
+                                <div className='flex w-full bg-red-50 rounded-xl'>
+                                    <div className='card-body w-[60%] md:w-full'>
+                                        <div className="form-control  ">
                                             <label className="label">
                                                 <span className="label-text">Name</span>
-                                                <input type="text" placeholder="Name" id='name' required value={instructor[0]?.name} className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Name" id='name' required value={instructor[0]?.name} className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Age</span>
-                                                <input type="number" placeholder="Age" id='age' value={instructor[0]?.age} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="number" placeholder="Age" id='age' value={instructor[0]?.age} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Experience</span>
-                                                <input type="text" placeholder="Experience (Years)" id='experience' value={instructor[0]?.experience} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Experience (Years)" id='experience' value={instructor[0]?.experience} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Class Name</span>
-                                                <input type="text" value={instructor[0]?.className || instructor[0]?.category} placeholder="Class Name" id='className' required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" value={instructor[0]?.className || instructor[0]?.category} placeholder="Class Name" id='className' required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Photo URL</span>
-                                                <input type="text" placeholder="Photo URL" id='photo' value={instructor[0]?.photoURL || instructor[0]?.imageURL} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Photo URL" id='photo' value={instructor[0]?.photoURL || instructor[0]?.imageURL} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Skills</span>
-                                                <input type="text" placeholder="Skills" id='skill' value={instructor[0]?.skill} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Skills" id='skill' value={instructor[0]?.skill} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">
                                                     Description
                                                 </span>
-                                                <input type="text" placeholder="Description" value={instructor[0]?.description} id='description' required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Description" value={instructor[0]?.description} id='description' required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Email</span>
-                                                <input type="email" placeholder="Email" id='email' value={instructor[0]?.email} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="email" placeholder="Email" id='email' value={instructor[0]?.email} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Contact No.</span>
-                                                <input type="text" placeholder="Contact No." id='contact' value={instructor[0]?.contact} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Contact No." id='contact' value={instructor[0]?.contact} required className="input ms-2 input-bordered" />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Address</span>
-                                                <input type="text" placeholder="Address" id='address' value={instructor[0]?.address} required className="input ms-2 input-bordered" />
                                             </label>
+                                            <input type="text" placeholder="Address" id='address' value={instructor[0]?.address} required className="input ms-2 input-bordered" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="form-control my-6">
-                                    <button className="btn btn-primary w-[30%] mx-auto">Update Profile</button>
+                                <div className="form-control my-4">
+                                    <button className="btn btn-primary md:w-[40%] w-[60%]  md:text-md text-sm px-2  mx-auto">Update Profile</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+           
             </div>
         </div>
     );

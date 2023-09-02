@@ -18,9 +18,7 @@ const PopularInstructors = () => {
             },
         }
     );
-
-    // console.log(instructors);
-
+    
     return (
         <div className='py-4'>
             <SectionTitle subheading="Have a Look" heading="Our Popular Instructors"></SectionTitle>
@@ -29,19 +27,19 @@ const PopularInstructors = () => {
                     <div className="card md:w-[90%] bg-base-100 shadow-xl md:border-4">
                         <figure><img className='w-full h-[250px] md:h-[350px]' src={instructor?.imageURL} alt="Instructor" /></figure>
                         <div className="card-body">
-                            <h2 className="card-title font-bold text-2xl">
+                            <h2 className="card-title font-bold text-lg md:text-2xl">
                                 {instructor?.name}
 
                             </h2>
-                            <div className="card-actions justify-start ">
-                                <p className='text-xl'>{instructor?.category || instructor?.className}</p>
+                            <div className="md:card-actions justify-start flex-col">
+                                <p className='md:text-xl text-lg'>{instructor?.category || instructor?.className}</p>
 
-                                <div className="badge badge-outline md:text-lg md:p-4 p-2 mt-4 gap-2 md:font-bold"><FaBriefcase></FaBriefcase> {instructor?.experience} </div>
+                                <div className="md:badge  md:badge-outline md:text-lg md:p-4 p-2 mt-2 gap-2 md:font-bold"><FaBriefcase></FaBriefcase> {instructor?.experience} </div>
                             </div>
 
 
                         </div>
-                        <label htmlFor={instructor._id} className="btn mx-auto my-4 btn-sm btn-outline bg-fuchsia-600 text-white ">Details</label>
+                        <label htmlFor={instructor._id} className="btn mx-auto mb-4 btn-sm btn-outline bg-fuchsia-600 text-white ">Details</label>
 
                         <input type="checkbox" id={instructor._id} className="modal-toggle" />
                         <div className="modal">

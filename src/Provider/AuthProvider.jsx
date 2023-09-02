@@ -11,85 +11,6 @@ const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [loading,setLoading] = useState(true);
 
-  // const createUser = (email, password) => {
-  //   setLoading(true)
-  //   return createUserWithEmailAndPassword(auth, email, password);
-  // };
-  // // const loginUserEmail = (email, password) => {
-  // const signIn = (email, password) => {
-  //   setLoading(true)
-  //   return signInWithEmailAndPassword(auth, email, password);
-  // };
-
-  // // const googleSignIN = () =>{
-  // const googleSignIn = () =>{
-  //   setLoading(true)
-  //   return signInWithPopup(auth, googleProvider)
-  // }
-
-  // // Update a user's profile
-
-  // const userProfileUpdate = (name, photoUrl, phoneNumber) => {
-  //   return updateProfile(auth.currentUser, {
-  //     displayName: name,
-  //     photoURL: photoUrl,
-  //     phoneNumber: phoneNumber,
-  //   })
-  //     .then(() => {
-  //       // Profile updated!
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       // An error occurred
-  //       // ...
-  //       console.log(error);
-  //     });
-  // };
-
-  // const logOutUser = () =>{
-  //   signOut(auth)
-  // }
-
-
-  // //  onAuthStateChanged
-  // useEffect(() => {
-  //   const connection = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-
-  //     if (currentUser) {
-  //         axios
-  //           .post("http://localhost:5000/jwt", { email: currentUser.email })
-  //           .then((data) => {
-  //             console.log(data.data.token);
-
-  //             localStorage.setItem("JWTToken", data.data.token);
-  //             setLoading(false);
-  //           });
-  //       }
-  //      else {
-  //       // User is signed out
-  //       localStorage.removeItem("JWTToken");
-
-  //       setLoading(false);
-  //     }
-
-  //   });
-  //   return () => {
-  //     return connection();
-  //   };
-  // }, []);
-
-
-
-  // const authInfo = {
-  //   createUser,
-  //   user,
-  //   loginUserEmail,
-  //   logOutUser,
-  //   googleSignIN,
-  //   userProfileUpdate,
-  //   loading,
-  // };
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
@@ -123,7 +44,7 @@ useEffect(() => {
 
         // get and set token
         if(currentUser){
-            axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+            axios.post('https://champions-development-academy-server.vercel.app/jwt', {email: currentUser.email})
             .then(data =>{
                 // console.log(data.data.token)
                 localStorage.setItem('access-token', data.data.token)

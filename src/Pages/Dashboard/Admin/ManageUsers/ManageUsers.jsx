@@ -19,7 +19,7 @@ const ManageUsers = () => {
     console.log(id);
 
     fetch(
-      `http://localhost:5000/users/instructors/${id}`,
+      `https://champions-development-academy-server.vercel.app/users/instructors/${id}`,
       {
         method: "PATCH",
       }
@@ -38,7 +38,7 @@ const ManageUsers = () => {
   // Make Admin handler
   const handlerAdminMake = (id) => {
     fetch(
-      `http://localhost:5000/users/admin/${id}`,
+      `https://champions-development-academy-server.vercel.app/users/admin/${id}`,
       {
         method: "PATCH",
       }

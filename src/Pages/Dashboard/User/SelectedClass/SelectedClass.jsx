@@ -13,7 +13,7 @@ const SelectedClass = () => {
   }
 
   console.log(selectClass);
-  const handleDelete = (id) =>{
+  const handleDelete = (id) => {
     console.log(id);
     Swal.fire({
       title: 'Are you sure?',
@@ -23,24 +23,24 @@ const SelectedClass = () => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-          fetch(`http://localhost:5000/select/classes/${id}`, {
-              method: 'DELETE'
+        fetch(`https://champions-development-academy-server.vercel.app/select/classes/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
           })
-              .then(res => res.json())
-              .then(data => {
-                  if (data.deletedCount > 0) {
-                      refetch();
-                      Swal.fire(
-                          'Deleted!',
-                          'Your file has been deleted.',
-                          'success'
-                      )
-                  }
-              })
       }
-  })
+    })
   }
 
   return (
@@ -78,7 +78,7 @@ const SelectedClass = () => {
                   </td>
                   <td>
                     {/* <Button variant="outlined">Delete</Button> */}
-                    <button onClick={()=>handleDelete(selectedClass._id)} className="btn bg-red-600 text-3xl text-white"><FaTrashAlt></FaTrashAlt></button>
+                    <button onClick={() => handleDelete(selectedClass._id)} className="btn bg-red-600 text-3xl text-white"><FaTrashAlt></FaTrashAlt></button>
                   </td>
                   <td>
                     <Link

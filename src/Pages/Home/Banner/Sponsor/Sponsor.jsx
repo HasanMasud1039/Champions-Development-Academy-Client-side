@@ -22,9 +22,9 @@ const Sponsor = () => {
                 {
                     sponsors.map(sponsor => (
                         <div className="card glass text-transparent hover:text-black md:h-[300px] py-2">
-                            <figure><img className='md:h-[200px] md:w-[200px] h-[150px] w-[150px] rounded-full object-cover ' src={sponsor.photoURL} alt="car!" /></figure>
-                            <div className="absolute ps-2  bottom-1">
-                                <h2 className=" text-md mx-auto font-bold">{sponsor.companyName}</h2>
+                            <figure><img className='md:h-[200px] md:w-[200px] hover:shadow-xl h-[100px] w-[100px] rounded-full object-cover ' src={sponsor.photoURL} alt="car!" /></figure>
+                            <div className="absolute ps-2  bottom-1 ">
+                                <h2 className=" md:text-md text-xs mx-auto font-bold ">{sponsor.companyName}</h2>
                                 <p >With us since {sponsor.yearSince}</p>
                             </div>
                         </div>

@@ -14,6 +14,7 @@ const Dashboard = () => {
     const [isInstructor] = useInstructor();
     const { logOut } = useContext(AuthContext);
     const [theme, setTheme] = useState(null);
+    const feedbacks= localStorage.getItem("feedbacks");
 
     const handleLogOut = () => {
         logOut()
@@ -75,7 +76,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/instructorHome'><FaHome></FaHome> Instructor Home</NavLink></li>
                                 <li><NavLink to='/dashboard/addClass'><FaFolderPlus></FaFolderPlus> Add Class</NavLink></li>
                                 <li><NavLink to='/dashboard/myClasses'><FaClipboardList></FaClipboardList> My Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/instructorInbox'><FaInbox></FaInbox>Inbox</NavLink></li>
+                                <li><NavLink to='/dashboard/instructorInbox'><FaInbox></FaInbox>Inbox <div className="badge badge-warning px-4 text-xl">{feedbacks}</div></NavLink></li>
                             </> : <>
 
                                 <li><NavLink to='/dashboard/userHome'><FaHome></FaHome> User Home</NavLink></li>

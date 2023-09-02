@@ -46,12 +46,12 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
-        loader: () => fetch('http://localhost:5000/classes/instructor')
+        loader: () => fetch('https://champions-development-academy-server.vercel.app/classes/instructor')
       },
       {
         path: "/allClasses",
         element: <AllClasses></AllClasses>,
-        loader: () => fetch("http://localhost:5000/classes/all")
+        loader: () => fetch("https://champions-development-academy-server.vercel.app/classes/all")
       }
     ]
   },

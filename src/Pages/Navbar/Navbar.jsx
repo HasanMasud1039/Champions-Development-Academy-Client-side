@@ -20,7 +20,7 @@ const Navbar = () => {
             .catch(error => console.log(error));
     };
 
-    /////////dark
+    //dark
     useEffect(() => {
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             setTheme("light");

@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 const InstructorInbox = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user, loading } = useAuth();
-    // const [feedbacks, setFeedbacks] = useState([]);
+    const [fdbacks, setFdbacks] = useState([]);
     const { data: feedbacks = [] } = useQuery({
         enabled: !loading,
         queryKey: ["feedback", user?.email],
@@ -23,7 +23,16 @@ const InstructorInbox = () => {
 
         },
     });
-    console.log(feedbacks);
+let count =0;
+    feedbacks.map(fedback=>{
+        const feds = typeof(fedback.feedback) !== "undefined";
+        if(typeof(fedback.feedback) !== "undefined"){
+            count++;
+        }
+        console.log(feds);
+    })
+    console.log(count);
+    localStorage.setItem("feedbacks", count);
     return (
         <div className=' w-full h-full'>
             <Helmet>
