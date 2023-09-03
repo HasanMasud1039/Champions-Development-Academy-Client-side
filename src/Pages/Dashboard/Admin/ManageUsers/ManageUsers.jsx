@@ -68,13 +68,13 @@ const ManageUsers = () => {
           ...springs,
         }}
       >
-        <h1 className="md:text-4xl text-xl md:text-center font-bold mb-5 mt-5 uppercase">users</h1>
+        <h1 className="md:text-4xl dark:text-white text-xl md:text-center font-bold mb-5 mt-5 uppercase">users</h1>
       </animated.div>
       <div className="md:w-full w-[90%]">
-        <table className="table table-zebra table-xs md:table-md">
+        <table className="table light:table-zebra table-xs md:table-md">
           {/* head */}
-          <thead className="mb-8 bg-lime-100 rounded-t-2xl">
-            <tr className='uppercase md:text-md text-xs'>
+          <thead className="mb-8 bg-lime-100 dark:text-white dark:bg-slate-700 rounded-t-2xl">
+            <tr className='uppercase md:text-xl text-xs'>
               <th>#</th>
               <th>User</th>
               <th>Info</th>
@@ -82,7 +82,7 @@ const ManageUsers = () => {
               <th>Make Admin</th>
             </tr>
           </thead>
-          <tbody className="  bg-red-100 rounded-2xl ">
+          <tbody className="  bg-red-100 rounded-2xl dark:text-white dark:bg-black">
             {users.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
@@ -100,7 +100,7 @@ const ManageUsers = () => {
                       >
                         <img
                           src={user?.photo}
-                          alt="Admin"
+                          alt="USER"
                         />
                       </div>
                     </div>
@@ -129,7 +129,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handlerMakeInstructor(user._id)}
-                    className="btn btn-outline btn-secondary p-2 text-3xl"
+                    className="btn btn-outline btn-secondary p-2 text-2xl md:text-5xl"
                     disabled={user.role === "instructor"}
                   >
                     <FaChalkboardTeacher></FaChalkboardTeacher>
@@ -139,7 +139,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handlerAdminMake(user._id)}
-                    className="btn btn-outline btn-success p-2 text-3xl"
+                    className="btn btn-outline btn-success p-2 text-2xl md:text-5xl"
                     disabled={user.role === "admin"}
                   >
                     <FaUserShield></FaUserShield>

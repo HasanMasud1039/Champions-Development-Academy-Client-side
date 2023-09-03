@@ -42,23 +42,23 @@ const AdminHome = () => {
                     ...springs,
                 }}
             >
-                <p className='text-3xl font-bold md:text-center pt-6'>Welcome!</p>
-                <p className='text-2xl font-bold md:text-center md:p-6 p-2'>Our Honorable Admin <span className='text-red-500'>{user.displayName}</span>.</p>
+                <p className='text-3xl dark:text-white font-bold md:text-center pt-6'>Welcome!</p>
+                <p className='text-2xl dark:text-white font-bold md:text-center md:p-6 p-2'>Our Honorable Admin <span className='text-red-500'>{user.displayName}</span>.</p>
             </animated.div>
             <div className='md:flex gap-4 space-y-2 justify-center'>
                 <div className='h-[200px] rounded-3xl bg-lime-200 shadow-xl w-[200px] border border-4 text-center p-6'>
 
-                    <p className='text-xl'>Number of classes</p>
+                    <p className='text-xl dark:text-lime-800'>Number of classes</p>
                     <p className='text-3xl font-bold text-orange-600 py-6'>{classes.length}</p>
                 </div>
                 <div className='h-[200px] rounded-3xl bg-lime-200 shadow-xl w-[200px] border border-4 text-center p-6'>
 
-                    <p className='text-xl'>Number of users</p>
+                    <p className='text-xl dark:text-lime-800'>Number of users</p>
                     <p className='text-3xl font-bold text-orange-600 py-6'>{users.length}</p>
                 </div>
                 <div className='h-[200px] rounded-3xl bg-lime-200 shadow-xl w-[200px] border border-4 text-center p-6'>
 
-                    <p className='text-xl'>Number of payments</p>
+                    <p className='text-xl dark:text-lime-800'>Number of payments</p>
                     <p className='text-3xl font-bold text-orange-600 py-6'>{totalPayments.length}</p>
                 </div>
             </div>

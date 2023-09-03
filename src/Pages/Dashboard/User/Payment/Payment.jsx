@@ -25,7 +25,7 @@ const Payment = () => {
       <Helmet>
         <title>Payment | Champion's Development academy</title>
       </Helmet>
-      <h1 className="text-2xl uppercase font-semibold text-center">
+      <h1 className="text-2xl dark:text-white uppercase font-semibold text-center">
         please make payment
       </h1>
       <div className="w-full">

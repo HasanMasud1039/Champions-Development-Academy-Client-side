@@ -39,10 +39,10 @@ let count =0;
                 <title>Inbox | Champion's Development academy</title>
             </Helmet>
             {feedbacks.length > 0 ? <div >
-                <p className='text-2xl font-bold text-center mx-auto my-6 p-4 uppercase'>Feedbacks from admin</p>
-                <table className="table table-zebra">
+                <p className='text-2xl font-bold text-center mx-auto my-6 p-4 uppercase dark:text-white'>Feedbacks from admin</p>
+                <table className="table light:table-zebra">
                     {/* head */}
-                    <thead className="bg-red-200 font-bold text-lg flex">
+                    <thead className="bg-slate-400  dark:bg-black dark:text-white rounded-t-xl font-bold text-lg flex">
                         <tr className='uppercase'>
                             <th>#</th>
                             <th>Feedback</th>
@@ -51,7 +51,7 @@ let count =0;
                             {/* <th>Price</th> */}
                         </tr>
                     </thead>
-                    <tbody className='text-lg'>
+                    <tbody className='text-lg bg-red-100 dark:bg-black dark:text-white'>
                         {feedbacks.map((feedback, index) => (
                             <div>
                                 {

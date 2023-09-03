@@ -48,8 +48,8 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile lg:drawer-open w-full max-h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content  py-4">
-                <label htmlFor="my-drawer-2"className="btn  bg-orange-600 rounded-b-3xl px-4 text-white rounded-t-sm drawer-button lg:hidden">Dashboard</label>
-                <div className='w-[90%] mx-auto'><Outlet></Outlet></div>
+                <label htmlFor="my-drawer-2"className="btn  bg-fuchsia-600 rounded-b-3xl px-4 dark:text-white text-black rounded-t-sm drawer-button lg:hidden">Dashboard</label>
+                <div className='w-[90%] mx-auto dark:bg-black dark:text-white'><Outlet></Outlet></div>
             </div>
             <div className="drawer-side  w-[62%] md:w-[90%]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

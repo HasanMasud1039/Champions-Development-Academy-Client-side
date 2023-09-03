@@ -12,8 +12,8 @@ const UserHome = () => {
             <Helmet>
                 <title>User Home | Champion's Development academy</title>
             </Helmet>
-            <p className='text-3xl font-bold text-center pt-6'>Welcome!</p>
-            <p className='text-2xl font-bold text-center p-6'>Our valuable user <span className='text-red-500'>{user.displayName}</span>.</p>
+            <p className='text-3xl dark:text-white font-bold text-center pt-6'>Welcome!</p>
+            <p className='text-2xl dark:text-white font-bold text-center p-6'>Our valuable user <span className='text-red-500'>{user.displayName}</span>.</p>
             <div className='pt-4 md:flex gap-4'>
                 <div>
                     <img className='rounded-tr-3xl rounded-bl-3xl' src={user?.photoURL} alt="" />

@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
 
-    <footer className='px-8 pt-6 md:bg-slate-200 bg-black md:text-black text-white text-base-content'>
+    <footer className='px-8 pt-6 md:bg-slate-200 bg-black md:text-black text-white dark:text-white dark:bg-slate-800 text-base-content'>
       <div className="footer">
         <div className='text-center'>
           <img className='w-28 mx-auto rounded-full' src="cda2.PNG" alt="" />

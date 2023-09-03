@@ -49,12 +49,12 @@ const SelectedClass = () => {
         <title>Selected Classes | Champion's Development academy</title>
       </Helmet>
       <div>
-        <h1 className="md:text-4xl text-xl text-center mb-5 mt-5 font-bold uppercase">selected Classes </h1>
+        <h1 className="md:text-4xl dark:text-white text-xl text-center mb-5 mt-5 font-bold uppercase">selected Classes </h1>
       </div>
-      <div className="md:w-full w-[90%]">
-        <table className="table table-zebra table-xs md:table-lg">
+      <div className="md:w-full w-[90%] dark:bg-black dark:text-white">
+        <table className="table light:table-zebra dark:bg-black dark:text-white table-xs md:table-lg">
           {/* head */}
-          <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+          <thead className="mb-8 bg-lime-100 dark:bg-slate-600 dark:text-white rounded-t-2xl">
             <tr className='uppercase md:text-md text-xs'>
               <th>#</th>
               <th>Class Photo</th>
@@ -63,10 +63,10 @@ const SelectedClass = () => {
               <th>Pay</th>
             </tr>
           </thead>
-          <tbody className="  bg-red-100 rounded-2xl ">
+          <tbody className="dark:bg-black dark:text-white bg-red-100 rounded-2xl ">
             {Array.isArray(selectClass) && // Add a check to ensure selectClass is an array
               selectClass.map((selectedClass, index) => (
-                <tr key={selectedClass._id} className="hover">
+                <tr key={selectedClass._id} className="light:hover">
                   <th>{index + 1}</th>
                   <div className="md:w-32 w-24 rounded">
                     <img src={selectedClass.classImage} />

@@ -19,18 +19,18 @@ const PaymentHistory = () => {
   );
   console.log(paymentHistoryData);
   return (
-    <div className="md:w-full w-[50%] overflow-x-auto md:overflow-x-hidden">
+    <div className="md:w-full w-[50%] overflow-x-auto md:overflow-x-hidden ">
       <Helmet>
         <title>Payment History | Champion's Development academy</title>
       </Helmet>
       <div>
-        <h1 className="md:text-4xl text-lg md:text-center md:font-bold font-semibold mb-5 mt-5 uppercase"> payment history</h1>
+        <h1 className="md:text-4xl text-lg md:text-center dark:text-white md:font-bold font-semibold mb-5 mt-5 uppercase"> payment history</h1>
       </div>
       <div className="md:w-full w-[99%]">
-        <table className="table table-zebra table-xs md:table-md">
+        <table className="table  dark:bg-black dark:text-white light:table-zebra table-xs md:table-md">
           {/* head */}
-          <thead className="mb-8 bg-lime-100 rounded-t-2xl">
-            <tr className='uppercase md:text-md text-xs'>
+          <thead className="mb-8 bg-lime-100 dark:bg-slate-600  dark:text-white rounded-t-2xl">
+            <tr className='uppercase md:text-md text-xs py-2'>
               <th>#</th>
               <th>transaction_id</th>
               <th>Payed Amount</th>
@@ -40,7 +40,7 @@ const PaymentHistory = () => {
               <th>Date</th>
             </tr>
           </thead>
-          <tbody className="  bg-red-100 rounded-2xl ">
+          <tbody className="  bg-red-100 dark:bg-black dark:text-white rounded-2xl ">
             {paymentHistoryData.map((payHis, index) => (
               <tr key={payHis._id}>
                 <th>{index + 1}</th>

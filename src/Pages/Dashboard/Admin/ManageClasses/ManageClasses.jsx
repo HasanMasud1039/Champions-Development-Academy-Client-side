@@ -109,14 +109,14 @@ const ManageClasses = () => {
                     ...springs,
                 }}
             >
-                <h1 className="md:text-4xl text-xl md:text-center font-bold mb-5 mt-5 uppercase">Classes</h1>
+                <h1 className="md:text-4xl dark:text-white text-xl md:text-center font-bold mb-5 mt-5 uppercase">Classes</h1>
             </animated.div>
-            <div>
+            <div className="dark:text-white dark:bg-black">
                 <div className="md:w-full w-[90%]">
-                    <table className="table table-zebra table-xs md:table-md">
+                    <table className="table light:table-zebra table-xs md:table-md">
                         {/* head */}
-                        <thead className="mb-8 bg-lime-100 rounded-t-2xl">
-                            <tr className='uppercase md:text-md text-xs flex justify-evenly'>
+                        <thead className="mb-8 bg-lime-100 dark:text-white dark:bg-slate-700 rounded-t-2xl">
+                            <tr className='uppercase md:text-lg text-xs flex justify-evenly'>
                                 <th>#</th>
                                 <th>Class Image</th>
                                 <th>Class name</th>
@@ -125,7 +125,7 @@ const ManageClasses = () => {
                                 <th className="text-right">Status</th>
                             </tr>
                         </thead>
-                        <tbody className=" bg-red-100">
+                        <tbody className=" bg-red-100 dark:text-white dark:bg-black">
                             {adminClassesAll.map((adminClasses, index) => (<div key={adminClasses._id}>
                                 {
                                     adminClasses.className ?
@@ -137,16 +137,16 @@ const ManageClasses = () => {
                                                         <img className="rounded-t-xl" src={adminClasses.classImage} alt="Class" />
                                                         {adminClasses.Status === "approved" ?
                                                             <div className="flex mt-2 md:text-md text-sm">
-                                                                <span className="label-text text-lg mt-2 pe-2">Approved</span>
+                                                                <span className="label-text dark:text-white text-lg mt-2 pe-2">Approved</span>
                                                                 <input type="checkbox" className="toggle md:toggle-lg toggle-sm bg-green-700" checked />
                                                             </div>
                                                             : adminClasses.Status === "denied" ?
                                                                 <div className="flex mt-2 md:text-md text-sm">
-                                                                    <span className="label-text text-lg mt-2 pe-2">Denied</span>
+                                                                    <span className="label-text dark:text-white text-lg mt-2 pe-2">Denied</span>
                                                                     <input type="checkbox" className="toggle md:toggle-lg toggle-sm bg-red-700" checked />
                                                                 </div>
                                                                 : <div className="flex mt-2">
-                                                                    <span className="label-text text-lg mt-2 pe-2">Pending</span>
+                                                                    <span className="label-text dark:text-white text-lg mt-2 pe-2">Pending</span>
                                                                     <input type="checkbox" className="toggle toggle-lg bg-yellow-500" checked />
                                                                 </div>
 

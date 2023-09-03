@@ -17,12 +17,12 @@ const PaymentCards = () => {
     );
     // console.log(cards);
     return (
-        <div>
+        <div className='md:px-4'>
             <SectionTitle subheading="We Accept" heading="Online Payments"></SectionTitle>
             <div className='grid md:grid-cols-8 grid-cols-4 mt-6 pb-9 gap-2'>
                 {
                     cards.map(card => (
-                        <div className="card glass h-[130px] p-1">
+                        <div className="card glass md:h-[130px] p-1">
                             <figure><Link><img className='h-[100px] md:w-[200px]  rounded-xl object-contain ' src={card.cardImage} alt="car!" /></Link></figure>
                         </div>
                     ))

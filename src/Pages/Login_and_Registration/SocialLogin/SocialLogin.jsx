@@ -32,12 +32,12 @@ const SocialLogin = () => {
     }
 
     return (
-        <div>
+        <div className="">
             <p className="px-4 text-lg font-bold">Or Login With</p>
             <div className="divider"></div>
-            <div className="w-full text-center my-4 mb-8 gap-4 flex justify-center">
+            <div className="w-full border-2 py-4 rounded-2xl text-center my-4 mb-8 gap-4 flex justify-center">
                 <button onClick={handleGoogleSignIn} className="btn  text-3xl btn-outline bg-blue-400">
-                    <p className="px-6 text-red-600"><FaGoogle></FaGoogle></p>
+                    <p className="px-6 text-red-600 "><FaGoogle></FaGoogle></p>
                 </button>
                 <button  className="btn text-red-600 text-3xl btn-outline bg-blue-400">
                     <p className="px-6 disabled text-blue-700"><FaFacebook></FaFacebook></p>

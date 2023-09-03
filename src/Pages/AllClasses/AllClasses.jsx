@@ -56,9 +56,9 @@ const AllClasses = () => {
             </Helmet>
             <div className='py-4'>
                 <SectionTitle subheading="Have a look" heading="Our Classes"></SectionTitle>
-                <div className='grid md:grid-cols-3 grid-cols-2 md:gap-2'>
+                <div className='grid md:grid-cols-3 grid-cols-2 md:gap-2 gap-1'>
                     {allClasses ? allClasses.map(allClass =>
-                        <div className="card md:w-[90%] bg-base-100 shadow-xl border-4">
+                        <div className="card md:w-[90%] bg-base-100 shadow-xl border-4 dark:bg-black dark:text-white">
                             <figure><img className='w-full md:h-[350px] h-[250px]' src={allClass.classImage} alt="Instructor" /></figure>
                             <div className="card-body md:mt-4">
                                 <h2 className="card-title font-bold md:text-xl text-lg">

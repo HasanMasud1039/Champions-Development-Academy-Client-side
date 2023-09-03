@@ -6,6 +6,7 @@ import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import { useEffect } from 'react';
 import { useState } from 'react';
+// import navImage from '../../../public/CDA33.PNG'
 
 const Navbar = () => {
 
@@ -46,11 +47,11 @@ const Navbar = () => {
     return (
         <div>
 
-            <div className="navbar md:bg-base-100 bg-black text-white md:text-black">
+            <div className="navbar md:bg-base-100 bg-black dark:bg-slate-900 dark:text-white text-white md:text-black">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost btn-lg lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <label tabIndex={0} className="btn btn-ghost btn-xl lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <div className=' text-2xl font-serif text-slate-600 className="dropdown dropdown-end w-[80%] space-y-2  justify-end"'>
@@ -62,28 +63,31 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'>Dashboard</Link></li>
                                         : <></>
                                 }
+                                <div className='flex gap-2  rounded-3xl ms-4  text-sm hover:text-red-400  '>Dark
+                                    <input role='switch' id='black' defaultChecked onClick={handleThemeSwitch} type="checkbox" className="toggle toggle-md px-4 " />
+                                </div>
                             </div>
                         </ul>
                     </div>
                     <div className=" border-3 w-full ">
-                        <img className=' h-20 w-[80%] md:block hidden' src="/public/CDA33.PNG" alt="" />
+                        <img className=' h-20 w-[80%] md:block hidden' src='https://i.ibb.co/s2fFzMH/CDA33.png' alt="" />
                         <p className='p-3  font-serif text-sm text-center font-semibold block md:hidden'>Champion's Development Academy</p>
 
 
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 border-2 px-6 pt-4  bg-cyan-100 rounded-t-3xl">
+                    <ul className="menu menu-horizontal px-1 border-2 px-6 pt-4 dark:bg-black dark:text-white bg-cyan-100 rounded-t-3xl">
                         <div className=' text-2xl font-serif text-slate-600  flex justify-evenly gap-4 '>
-                            <a className='rounded-2xl  hover:text-black  '><Link to='/'>Home</Link></a>
-                            <a className='rounded-2xl  hover:text-black '><Link to='/allClasses'>Classes</Link></a>
-                            <a className='rounded-2xl  hover:text-black '><Link to='/instructors'>Instructors</Link></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/'>Home</Link></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/allClasses'>Classes</Link></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/instructors'>Instructors</Link></a>
                             {
                                 user ?
-                                    <a className=' hover:text-black'><Link to='/dashboard'>Dashboard</Link></a>
+                                    <a className=' hover:text-red-400 '><Link to='/dashboard'>Dashboard</Link></a>
                                     : <></>
                             }
-                            <div className='flex gap-2  rounded-3xl ms-4  hover:text-black '>Dark                             
+                            <div className='flex gap-2  rounded-3xl ms-4  hover:text-red-400  '>Dark
                                 <input role='switch' id='black' defaultChecked onClick={handleThemeSwitch} type="checkbox" className="toggle px-4 " />
                             </div>
                         </div>
@@ -92,10 +96,10 @@ const Navbar = () => {
                 <div className="navbar-end">
                     <div className="dropdown dropdown-end md:pe-4">
                         <label tabIndex={0} className="btn-lg btn-info btn-outline btn-circle avatar ">
-                            <div className="text-6xl border-4  text-slate-400 rounded-full">
+                            <div className="text-6xl border-4 dark:text-white  text-slate-400 rounded-full">
 
                                 {
-                                    user?.email ? <img src={user.photoURL} alt="" />
+                                    user?.email ? <img src={user.photoURL} alt="USER" />
                                         : <Link to='/login'><FaUserAlt></FaUserAlt></Link>
                                 }
                             </div>

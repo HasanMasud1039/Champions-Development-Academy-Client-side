@@ -55,15 +55,15 @@ const MyClasses = () => {
     }
 
     return (
-        <div className="md:w-full w-[55%] overflow-x-auto md:overflow-x-hidden">
+        <div className="md:w-full w-[55%] overflow-x-auto md:overflow-x-hidden ">
             <Helmet>
                 <title>My Classes | Champion's Development academy</title>
             </Helmet>
-            <h1 className="md:text-4xl text-lg md:text-center md:font-bold font-semibold mb-5 mt-5 uppercase">my Classes</h1>
-            <div className="md:w-full w-[90%]">
-                <table className="table table-zebra table-xs md:table-lg">
+            <h1 className="md:text-4xl dark:text-white text-lg md:text-center md:font-bold font-semibold mb-5 mt-5 uppercase">my Classes</h1>
+            <div className="md:w-full w-[90%] dark:bg-black dark:text-white">
+                <table className="table light:table-zebra table-xs md:table-lg rounded-2xl">
                     {/* head */}
-                    <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+                    <thead className="mb-8  bg-slate-300 dark:bg-black dark:text-white rounded-t-xl">
                         <tr className='uppercase md:text-md text-xs'>
                             <th>#</th>
                             <th>Class Image</th>
@@ -75,7 +75,7 @@ const MyClasses = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-red-100 dark:bg-black dark:text-white'>
                         {classes.map((myClass, index) => (
                             <tr key={myClass._id}>
                                 <th>{index + 1}</th>

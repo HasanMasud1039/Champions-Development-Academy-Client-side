@@ -24,7 +24,7 @@ const PopularInstructors = () => {
             <SectionTitle subheading="Have a Look" heading="Our Popular Instructors"></SectionTitle>
             <div className='grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-2 md:p-4'>
                 {instructors.map(instructor =>
-                    <div className="card md:w-[90%] bg-base-100 shadow-xl md:border-4">
+                    <div className="card md:w-[90%] bg-base-100 dark:bg-black dark:text-white border-2 shadow-xl md:border-4">
                         <figure><img className='w-full h-[250px] md:h-[350px]' src={instructor?.imageURL} alt="Instructor" /></figure>
                         <div className="card-body">
                             <h2 className="card-title font-bold text-lg md:text-2xl">
@@ -43,7 +43,7 @@ const PopularInstructors = () => {
 
                         <input type="checkbox" id={instructor._id} className="modal-toggle" />
                         <div className="modal">
-                            <div className="modal-box grid grid-cols-2 gap-4">
+                            <div className="modal-box grid grid-cols-2 gap-4 dark:text-white dark:bg-black border-2">
                                 <div>
                                     <img className='rounded-tr-2xl rounded-bl-2xl mb-4 w-full h-[250px]' src={instructor?.imageURL} alt="" />
                                     <p className="font-bold text-xl mb-2">{instructor?.name}</p>

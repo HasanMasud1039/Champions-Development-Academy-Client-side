@@ -61,51 +61,51 @@ const Registration = () => {
             <Helmet>
                 <title>Registration | Champion's Development academy</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200 p-2">
+            <div className="hero min-h-screen bg-base-200 dark:bg-black dark:text-white p-2">
                 <div className="md:hero-content flex-col p-2">
                     <div className="md:text-center lg:text-left">
                         <h1 className="md:text-5xl text-2xl py-3 font-bold">Sign up now!</h1>
                     </div>
-                    <div className="card md:flex-shrink-0 md:w-full w-[60%] shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="md:card-body p-4 w-[80%]">
+                    <div className="card md:flex-shrink-0 md:w-full w-[60%] dark:border-2 dark:bg-black dark:text-white shadow-2xl bg-base-100">
+                        <form onSubmit={handleSubmit(onSubmit)} className="md:card-body p-4 w-[90%]">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text dark:text-white">Name</span>
                                 </label>
                                 <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text dark:text-white">Photo URL</span>
                                 </label>
                                 <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text dark:text-white">Email</span>
                                 </label>
                                 <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Contact No.(Optional)</span>
+                                    <span className="label-text dark:text-white">Contact No.(Optional)</span>
                                 </label>
                                 <input type="text"  {...register("contact")} name="contact" placeholder="Contact No." className="input input-bordered" />
 
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Address(Optional)</span>
+                                    <span className="label-text dark:text-white">Address(Optional)</span>
                                 </label>
                                 <input type="text"  {...register("address")} name="address" placeholder="Address" className="input input-bordered" />
 
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text dark:text-white">Password</span>
                                 </label>
                                 <input type="password"  {...register("password", {
                                     required: true,
@@ -120,10 +120,10 @@ const Registration = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                                <input className="btn btn-primary text-lg" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className="ps-5 mb-4">Already have an account? <span className="text-blue-600"> <Link to="/login">Login</Link></span></p>
+                        <p className="ps-5 mb-4 text-lg">Already have an account? <span className="text-blue-600 text-xl"> <Link to="/login">Login</Link></span></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
