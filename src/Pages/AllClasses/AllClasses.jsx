@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import useAdmin from '../../Hooks/useAdmin';
 import { Helmet } from 'react-helmet';
 import { Toaster, toast } from 'react-hot-toast';
+import { Result } from 'postcss';
 
 const AllClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -21,7 +22,7 @@ const AllClasses = () => {
     const handleAddToCart = item => {
         const { _id, Status, availableSeats, classImage, className, instructorEmail, instructorName, instructorPhoneNumber, instructorPhoto, price } = item;
         const newId = _id;
-        const newItem = {newId, Status, availableSeats, classImage, className, instructorEmail, instructorName, instructorPhoneNumber, instructorPhoto, price, email };
+        const newItem = { newId, Status, availableSeats, classImage, className, instructorEmail, instructorName, instructorPhoneNumber, instructorPhoto, price, email };
         console.log(newItem);
         if (user) {
             axiosSecure
@@ -46,7 +47,28 @@ const AllClasses = () => {
                         })
                     }
                 });
-        } 
+        }
+        else {
+            Swal.fire({
+                title: "Please Login!",
+                text: "You cannot select this class.",
+                icon: "error",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    navigate('/login');
+                }
+                else {
+                    navigate('/allClasses');
+                }
+            })
+        }
     }
     return (
         <div>

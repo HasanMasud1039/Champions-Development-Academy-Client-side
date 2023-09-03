@@ -17,9 +17,9 @@ const Instructors = () => {
                 <SectionTitle subheading="Have a Look" heading="Our Instructors"></SectionTitle>
                 <div className='grid md:grid-cols-4 grid-cols-2 gap-4 p-4'>
                     {instructors.map(instructor =>
-                        <div className="card md:w-[90%] bg-base-100 shadow-xl border-4">
+                        <div className="card md:w-[90%] bg-base-100 shadow-xl border-4 dark:bg-black dark:text-white">
                             <figure><img className='w-full h-[250px] md:h-[350px]' src={instructor?.imageURL || instructor?.photo} alt="Instructor" /></figure>
-                            <div className="card-body">
+                            <div className="card-body dark:bg-black dark:text-white">
                                 <h2 className="card-title font-bold text-lg md:text-2xl">
                                     {instructor?.name}
 
@@ -40,8 +40,8 @@ const Instructors = () => {
 
                             {/* Put this part before </body> tag */}
                             <input type="checkbox" id={instructor._id} className="modal-toggle" />
-                            <div className="modal">
-                                <div className="modal-box grid grid-cols-2 gap-4">
+                            <div className="modal ">
+                                <div className="modal-box dark:border-4 dark:border-red-300 grid grid-cols-2 gap-4 dark:bg-slate-800 dark:text-white">
                                     <div>
                                         <img className='rounded-lg mb-4 w-full h-[250px]' src={instructor?.imageURL || instructor?.photo} alt="" />
                                         <p className="font-bold text-xl mb-2">{instructor?.name}</p>
