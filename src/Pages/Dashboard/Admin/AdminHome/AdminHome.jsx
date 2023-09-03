@@ -33,7 +33,7 @@ const AdminHome = () => {
         to: { x: 50 },
     });
     return (
-        <div>
+        <div className=''>
             <Helmet>
                 <title>Admin Home | Champion's Development academy</title>
             </Helmet>

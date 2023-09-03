@@ -45,7 +45,7 @@ const Dashboard = () => {
 
 
     return (
-        <div className="drawer drawer-mobile lg:drawer-open w-full max-h-screen">
+        <div className="drawer drawer-mobile lg:drawer-open w-full h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content  py-4">
                 <label htmlFor="my-drawer-2"className="btn  bg-fuchsia-600 rounded-b-3xl px-4 dark:text-white text-black rounded-t-sm drawer-button lg:hidden">Dashboard</label>

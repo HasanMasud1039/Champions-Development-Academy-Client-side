@@ -72,8 +72,8 @@ const Login = () => {
                     <div className="text-center ">
                     </div>
                     <h1 className="md:text-5xl text-lg my-4 font-bold">Login now!</h1>
-                    <div className="card dark:border-2 shadow-2xl bg-slate-300 dark:bg-black dark:text-white md:w-[80%] w-[60%]">
-                        <form onSubmit={handleLogin} className="md:card-body w-[70%]">
+                    <div className="card dark:border-2 shadow-2xl bg-slate-300 dark:bg-black dark:text-white md:w-[99%] w-[60%]">
+                        <form onSubmit={handleLogin} className="md:card-body w-[90%]">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Email</span>
