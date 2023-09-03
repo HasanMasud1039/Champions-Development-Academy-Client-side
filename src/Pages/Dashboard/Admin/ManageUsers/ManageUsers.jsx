@@ -59,7 +59,7 @@ const ManageUsers = () => {
     to: { x: 100 },
   });
   return (
-    <div>
+    <div className="md:w-full w-[65%] overflow-x-auto md:overflow-x-hidden">
       <Helmet>
         <title>Manage Users | Champion's Development academy</title>
       </Helmet>
@@ -68,89 +68,91 @@ const ManageUsers = () => {
           ...springs,
         }}
       >
-        <h1 className="text-4xl text-center font-bold m-4 uppercase">users</h1>
+        <h1 className="md:text-4xl text-xl md:text-center font-bold mb-5 mt-5 uppercase">users</h1>
       </animated.div>
-      <table className="table table-zebra">
-        {/* head */}
-        <thead className="bg-green-100 bg-opacity-20">
-          <tr>
-            <th>#</th>
-            <th>User</th>
-            <th>Info</th>
-            <th>Make Instructor</th>
-            <th>Make Admin</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={user._id}>
-              <th>{index + 1}</th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div
-                    className={`avatar  ${user.role === "admin" ? "online" : "offline"
-                      }`}
-                  >
+      <div className="md:w-full w-[90%]">
+        <table className="table table-zebra table-xs md:table-md">
+          {/* head */}
+          <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+            <tr className='uppercase md:text-md text-xs'>
+              <th>#</th>
+              <th>User</th>
+              <th>Info</th>
+              <th>Make Instructor</th>
+              <th>Make Admin</th>
+            </tr>
+          </thead>
+          <tbody className="  bg-red-100 rounded-2xl ">
+            {users.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>
+                  <div className="flex items-center space-x-3">
                     <div
-                      className={`w-16 rounded-full ${user.role === "admin"
+                      className={`avatar  ${user.role === "admin" ? "online" : "offline"
+                        }`}
+                    >
+                      <div
+                        className={`w-16 rounded-full ${user.role === "admin"
                           ? "ring ring-success ring-offset-base-100 ring-offset-2"
                           : "ring ring-primary ring-offset-base-100 ring-offset-2"
-                        } `}
-                    >
-                      <img
-                        src={user?.photo}
-                        alt="Admin"
-                      />
+                          } `}
+                      >
+                        <img
+                          src={user?.photo}
+                          alt="Admin"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{user.name}</div>
+                      <div className="text-sm opacity-50">
+                        {user.gender ? user.gender : "look up photo"}
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="font-bold">{user.name}</div>
-                    <div className="text-sm opacity-50">
-                      {user.gender ? user.gender : "look up photo"}
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                {user.email}
-                <br />
-                <span className="badge badge-ghost badge-sm my-3">
-                  <span className='me-2'><FaHome></FaHome></span>
-                  {user.address ? user.address : "No address provided"}
-                </span>
-                <br />
-                <span className="badge badge-sm"> <span className='me-2'><FaPhoneAlt></FaPhoneAlt></span>
-                  {user.contact
-                    ? user.contact
-                    : "No Contact No. provided"}
-                </span>
-              </td>
-              <td>
-                <button
-                  onClick={() => handlerMakeInstructor(user._id)}
-                  className="btn btn-outline btn-secondary p-2 text-3xl"
-                  disabled={user.role === "instructor"}
-                >
-                  <FaChalkboardTeacher></FaChalkboardTeacher>
-                  <Toaster></Toaster>
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={() => handlerAdminMake(user._id)}
-                  className="btn btn-outline btn-success p-2 text-3xl"
-                  disabled={user.role === "admin"}
-                >
-                  <FaUserShield></FaUserShield>
-                  <Toaster></Toaster>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+                </td>
+                <td>
+                  {user.email}
+                  <br />
+                  <span className="badge badge-ghost badge-sm my-3">
+                    <span className='me-2'><FaHome></FaHome></span>
+                    {user.address ? user.address : "No address provided"}
+                  </span>
+                  <br />
+                  <span className="badge badge-sm"> <span className='me-2'><FaPhoneAlt></FaPhoneAlt></span>
+                    {user.contact
+                      ? user.contact
+                      : "No Contact No. provided"}
+                  </span>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handlerMakeInstructor(user._id)}
+                    className="btn btn-outline btn-secondary p-2 text-3xl"
+                    disabled={user.role === "instructor"}
+                  >
+                    <FaChalkboardTeacher></FaChalkboardTeacher>
+                    <Toaster></Toaster>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handlerAdminMake(user._id)}
+                    className="btn btn-outline btn-success p-2 text-3xl"
+                    disabled={user.role === "admin"}
+                  >
+                    <FaUserShield></FaUserShield>
+                    <Toaster></Toaster>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      </div>
+      );
 };
 
-export default ManageUsers;
+      export default ManageUsers;

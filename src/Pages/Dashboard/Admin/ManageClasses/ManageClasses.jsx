@@ -38,7 +38,7 @@ const ManageClasses = () => {
 
 
         axiosSecure
-            .patch(`/admin/feedback`, {_id: selectedClassId, feedback: feedbackText, instructorEmail: selectedClassEmail, className: selectedClassName })
+            .patch(`/admin/feedback`, { _id: selectedClassId, feedback: feedbackText, instructorEmail: selectedClassEmail, className: selectedClassName })
             .then((data) => {
                 console.log("after posting feedback", data.data);
                 refetch();
@@ -99,7 +99,7 @@ const ManageClasses = () => {
         to: { x: 100 },
     });
     return (
-        <div>
+        <div className="md:w-full w-[55%] overflow-x-auto md:overflow-x-hidden">
             <Helmet>
                 <title>Manage Classes | Champion's Development academy</title>
             </Helmet>
@@ -109,13 +109,14 @@ const ManageClasses = () => {
                     ...springs,
                 }}
             >
-                <h1 className="text-4xl text-center font-bold m-4 uppercase">Classes</h1>
+                <h1 className="md:text-4xl text-xl md:text-center font-bold mb-5 mt-5 uppercase">Classes</h1>
             </animated.div>
             <div>
-                <div className="">
-                    <table className="table table-zebra">
-                        <thead className="">
-                            <tr className="uppercase flex justify-evenly">
+                <div className="md:w-full w-[90%]">
+                    <table className="table table-zebra table-xs md:table-md">
+                        {/* head */}
+                        <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+                            <tr className='uppercase md:text-md text-xs flex justify-evenly'>
                                 <th>#</th>
                                 <th>Class Image</th>
                                 <th>Class name</th>
@@ -124,7 +125,7 @@ const ManageClasses = () => {
                                 <th className="text-right">Status</th>
                             </tr>
                         </thead>
-                        <tbody className=" bg-slate-200">
+                        <tbody className=" bg-red-100">
                             {adminClassesAll.map((adminClasses, index) => (<div key={adminClasses._id}>
                                 {
                                     adminClasses.className ?
@@ -135,14 +136,14 @@ const ManageClasses = () => {
                                                     <div className="w-28 md:w-36 rounded-xl">
                                                         <img className="rounded-t-xl" src={adminClasses.classImage} alt="Class" />
                                                         {adminClasses.Status === "approved" ?
-                                                            <div className="flex mt-2">
+                                                            <div className="flex mt-2 md:text-md text-sm">
                                                                 <span className="label-text text-lg mt-2 pe-2">Approved</span>
-                                                                <input type="checkbox" className="toggle toggle-lg bg-green-700" checked />
+                                                                <input type="checkbox" className="toggle md:toggle-lg toggle-sm bg-green-700" checked />
                                                             </div>
                                                             : adminClasses.Status === "denied" ?
-                                                                <div className="flex mt-2">
+                                                                <div className="flex mt-2 md:text-md text-sm">
                                                                     <span className="label-text text-lg mt-2 pe-2">Denied</span>
-                                                                    <input type="checkbox" className="toggle toggle-lg bg-red-700" checked />
+                                                                    <input type="checkbox" className="toggle md:toggle-lg toggle-sm bg-red-700" checked />
                                                                 </div>
                                                                 : <div className="flex mt-2">
                                                                     <span className="label-text text-lg mt-2 pe-2">Pending</span>
@@ -152,7 +153,7 @@ const ManageClasses = () => {
                                                         }
                                                     </div>
                                                 </td>
-                                                <td className="font-bold w-[30%] text-lg text-left">{adminClasses.className}</td>
+                                                <td className="font-bold w-[30%] md:text-lg text-md text-left">{adminClasses.className}</td>
                                                 <td className="w-[30%] space-y-2">
                                                     <p className="font-semibold md:font-bold md:text-lg mb-2 text-left">{adminClasses.instructorName}</p>
 
@@ -168,13 +169,13 @@ const ManageClasses = () => {
                                                     <div className="flex flex-col justify-center items-center">
                                                         <div className="stats shadow ">
                                                             <div className="p-3 flex flex-col justify-center items-center">
-                                                                <div className="">Available seats</div>
-                                                                <div className="text-2xl font-bold">
+                                                                <div className="text-center">Available seats</div>
+                                                                <div className="md:text-2xl text-lg font-bold">
                                                                     {adminClasses.availableSeats
                                                                         ? adminClasses.availableSeats
                                                                         : 0}
                                                                 </div>
-                                                                <div className="stat-desc text-lg">
+                                                                <div className="stat-desc md:text-lg text-sm">
                                                                     Price: ${adminClasses.price}
                                                                 </div>
                                                             </div>
@@ -184,7 +185,7 @@ const ManageClasses = () => {
 
                                                 <td className=" ">
                                                     <div className="flex flex-col justify-end  gap-2 mr-0">
-                                                        <button className=" btn-success"
+                                                        <button className=" btn-success md:btn-md btn-sm"
                                                             onClick={() => handleApproved(adminClasses._id)}
                                                             disabled={
                                                                 adminClasses.Status === "approved" ||
@@ -192,15 +193,15 @@ const ManageClasses = () => {
                                                             }
                                                         >
                                                             Approve
-                                                          
+
                                                         </button>
-                                                        <button className="btn-error"
+                                                        <button className="btn-error md:btn-md btn-sm"
                                                             onClick={() => handleDenyed(adminClasses._id)}
 
                                                             disabled={adminClasses.Status === "denied"}
                                                         >
                                                             Deny
-                                                            
+
                                                         </button>
 
                                                         <>
@@ -208,23 +209,23 @@ const ManageClasses = () => {
 
                                                             <input type="checkbox" id={adminClasses._id} className="modal-toggle" />
                                                             <div className="modal">
-                                                                <div className="modal-box h-[90%]">
+                                                                <div className="modal-box h-[50%]">
                                                                     <div>
                                                                         <div className="flex items-center justify-between">
                                                                             <div>
-                                                                                <p className="text-lg">
-                                                                                    Send feedback to instructor: <span className="text-xl font-bold">
+                                                                                <p className="md:text-lg text-sm">
+                                                                                    Send feedback to instructor: <span className="text-lg md:font-bold font-semibold">
                                                                                         {adminClasses.instructorName}
                                                                                     </span>
                                                                                 </p>
-                                                                                <p className="text-lg">
-                                                                                    Send feedback for the Class: <span className="text-lg font-bold">
+                                                                                <p className="md:text-lg text-sm">
+                                                                                    Send feedback for the Class: <span className="text-lg md:font-bold font-semibold">
                                                                                         {adminClasses?.className}
                                                                                     </span>
                                                                                 </p>
                                                                             </div>
                                                                             <div className="modal-action">
-                                                                                <label htmlFor={adminClasses._id} className="text-xl text-red-600"><FaXbox></FaXbox></label>
+                                                                                <label htmlFor={adminClasses._id} className="text-2xl text-red-600"><FaXbox></FaXbox></label>
                                                                             </div>
                                                                         </div>
                                                                         <form onSubmit={handleSendFeedback} className="mb-0 mt-2">
@@ -232,16 +233,16 @@ const ManageClasses = () => {
                                                                                 <input type="text" required placeholder="Feedback" id='feedback' className="input input-bordered w-full h-[150px]" />
                                                                             </div>
                                                                             <div className="form-control ">
-                                                                                <input type="text" hidden id='id' value={adminClasses._id} className="input input-bordered " ></input>
+                                                                                <input type="text" hidden readOnly id='id' value={adminClasses._id} className="input input-bordered " ></input>
                                                                             </div>
                                                                             <div className="form-control ">
-                                                                                <input type="text" hidden id='insEmail' value={adminClasses.instructorEmail} className="input input-bordered " ></input>
+                                                                                <input type="text" hidden readOnly id='insEmail' value={adminClasses.instructorEmail} className="input input-bordered " ></input>
                                                                             </div>
                                                                             <div className="form-control ">
-                                                                                <input type="text" hidden id='className' value={adminClasses.className} className="input input-bordered " ></input>
+                                                                                <input type="text" hidden readOnly id='className' value={adminClasses.className} className="input input-bordered " ></input>
                                                                             </div>
                                                                             <div className="form-control">
-                                                                                <button className="btn btn-primary w-[30%] mx-auto">Send Feedback</button>
+                                                                                <button className="btn btn-primary md:w-[30%]  w-[60%] mx-auto">Send Feedback</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>

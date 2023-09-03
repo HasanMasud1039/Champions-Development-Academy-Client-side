@@ -23,9 +23,9 @@ const MyClasses = () => {
 
     console.log(classes);
 
-    const handleRemoveClass= (id) => {
+    const handleRemoveClass = (id) => {
 
-          Swal.fire({
+        Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -55,20 +55,20 @@ const MyClasses = () => {
     }
 
     return (
-        <div>
+        <div className="md:w-full w-[55%] overflow-x-auto md:overflow-x-hidden">
             <Helmet>
                 <title>My Classes | Champion's Development academy</title>
             </Helmet>
-            <p className='uppercase text-4xl text-center py-4 font-bold'>my Classes</p>
-            <div>
-                <table className="table table-zebra">
+            <h1 className="md:text-4xl text-lg md:text-center md:font-bold font-semibold mb-5 mt-5 uppercase">my Classes</h1>
+            <div className="md:w-full w-[90%]">
+                <table className="table table-zebra table-xs md:table-lg">
                     {/* head */}
-                    <thead className="bg-green-100 bg-opacity-20">
-                        <tr className='uppercase'>
+                    <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+                        <tr className='uppercase md:text-md text-xs'>
                             <th>#</th>
                             <th>Class Image</th>
                             <th>Class Name</th>
-                            <th>Available Seats</th>
+                            <th> Seats</th>
                             <th>Price</th>
                             <th>Enrolled</th>
                             <th>Status</th>
@@ -100,15 +100,15 @@ const MyClasses = () => {
                                 <td>
                                     {
                                         myClass.Status == 'approved' ?
-                                            <button className='btn btn-success'>{myClass?.Status}</button>
+                                            <button className='btn btn-success md:btn-md btn-sm '>{myClass?.Status}</button>
                                             : myClass.Status == 'denied' ?
-                                                <button className='btn btn-error'>{myClass?.Status}</button> :
+                                                <button className='btn btn-error md:btn-md btn-sm '>{myClass?.Status}</button> :
                                                 <button className='btn btn-warning'>pending</button>
                                     }
                                 </td>
                                 <td>
 
-                                    <button onClick={()=>handleRemoveClass(myClass._id)} disabled={myClass?.Status === 'approved'} className='text-3xl btn btn-outline text-red-800 text-center'><FaTrash/></button>
+                                    <button onClick={() => handleRemoveClass(myClass._id)} disabled={myClass?.Status === 'approved'} className="btn bg-red-600 md:btn-md btn-sm md:text-3xl text-xl text-white"><FaTrash /></button>
                                 </td>
                             </tr>
                         ))}

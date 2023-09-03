@@ -21,18 +21,18 @@ const EnrolledClass = () => {
   console.log(successfullyPaymentClass);
 
   return (
-    <div>
+    <div className="md:w-full w-[60%] overflow-x-auto md:overflow-x-hidden">
       <Helmet>
         <title>Enrolled Classes | Champion's Development academy</title>
       </Helmet>
       <div>
-        <h1 className="text-4xl text-center mb-5 mt-5 uppercase"> enrolled classes</h1>
+        <h1 className="md:text-4xl text-xl text-center mb-5 mt-5 uppercase"> enrolled classes</h1>
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table table-zebra">
+          <table className="table table-zebra table-xs md:table-lg w-[70%s]">
             {/* head */}
-            <thead>
+            <thead className='bg-lime-100 rounded-xl'>
               <tr className='uppercase'>
                 <th>#</th>
                 <th>Class Photo</th>
@@ -43,11 +43,11 @@ const EnrolledClass = () => {
                 <th>Enrolled Date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className='bg-red-100 rounded-xl'>
               {successfullyPaymentClass.map((i, index) => (
                 <tr key={i._id}>
                   <th>{index + 1}</th>
-                  <div className="w-28 rounded-xl">
+                  <div className="md:w-28 w-24 rounded-xl">
                     <img src={i.classImage} />
                   </div>
                   <td>{i.className}</td>

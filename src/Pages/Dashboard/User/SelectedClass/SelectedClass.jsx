@@ -44,18 +44,18 @@ const SelectedClass = () => {
   }
 
   return (
-    <div>
+    <div className="md:w-full w-[80%] overflow-x-auto md:overflow-x-hidden">
       <Helmet>
         <title>Selected Classes | Champion's Development academy</title>
       </Helmet>
       <div>
-        <h1 className="text-4xl text-center mb-5 mt-5 uppercase">selected Classes </h1>
+        <h1 className="md:text-4xl text-xl text-center mb-5 mt-5 font-bold uppercase">selected Classes </h1>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table">
+      <div className="md:w-full w-[90%]">
+        <table className="table table-zebra table-xs md:table-lg">
           {/* head */}
-          <thead className="mb-8">
-            <tr className='uppercase'>
+          <thead className="mb-8 bg-lime-100 rounded-t-2xl">
+            <tr className='uppercase md:text-md text-xs'>
               <th>#</th>
               <th>Class Photo</th>
               <th>Class Name & price</th>
@@ -63,29 +63,29 @@ const SelectedClass = () => {
               <th>Pay</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="  bg-red-100 rounded-2xl ">
             {Array.isArray(selectClass) && // Add a check to ensure selectClass is an array
               selectClass.map((selectedClass, index) => (
                 <tr key={selectedClass._id} className="hover">
                   <th>{index + 1}</th>
-                  <div className="w-32 rounded">
+                  <div className="md:w-32 w-24 rounded">
                     <img src={selectedClass.classImage} />
                   </div>
-                  <td>
+                  <td className="md:text-md text-sm">
                     {selectedClass.className}
                     <br />
                     <span className="text-right">Price: $ {selectedClass.price}</span>
                   </td>
                   <td>
                     {/* <Button variant="outlined">Delete</Button> */}
-                    <button onClick={() => handleDelete(selectedClass._id)} className="btn bg-red-600 text-3xl text-white"><FaTrashAlt></FaTrashAlt></button>
+                    <button onClick={() => handleDelete(selectedClass._id)} className="btn bg-red-600 md:btn-md btn-sm md:text-3xl text-xl text-white"><FaTrashAlt></FaTrashAlt></button>
                   </td>
                   <td>
                     <Link
                       to={`/dashboard/payment?classId=${selectedClass._id
                         }&classData=${JSON.stringify(selectedClass)}`}
                     >
-                      <button className="btn btn-warning ">PAY NOW</button>
+                      <button className="btn btn-warning md:btn-md btn-sm">PAY NOW</button>
                     </Link>
                   </td>
                 </tr>

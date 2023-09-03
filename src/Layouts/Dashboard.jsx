@@ -45,10 +45,10 @@ const Dashboard = () => {
 
 
     return (
-        <div className="drawer drawer-mobile lg:drawer-open w-full ">
+        <div className="drawer drawer-mobile lg:drawer-open w-full max-h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content  py-4">
-                <label htmlFor="my-drawer-2"className="btn  bg-orange-600 rounded-b-3xl px-8 rounded-t-sm drawer-button lg:hidden">Dashboard</label>
+                <label htmlFor="my-drawer-2"className="btn  bg-orange-600 rounded-b-3xl px-4 text-white rounded-t-sm drawer-button lg:hidden">Dashboard</label>
                 <div className='w-[90%] mx-auto'><Outlet></Outlet></div>
             </div>
             <div className="drawer-side  w-[62%] md:w-[90%]">
