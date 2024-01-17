@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -28,7 +29,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 Swal.fire({
                     title: 'User Login Successful.',
                     showClass: {
@@ -40,18 +41,18 @@ const Login = () => {
                 });
                 navigate(from, { replace: true });
             })
-            .catch(error =>
-                Swal.fire({
-                    title: 'User Login Failed.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                }))
+            .catch(error => toast.error('Try Again!')
+                // Swal.fire({
+                //     title: 'Try Again.',
+                //     showClass: {
+                //         popup: 'animate__animated animate__fadeInDown'
+                //     },
+                //     hideClass: {
+                //         popup: 'animate__animated animate__fadeOutUp'
+                //     }
+                // })
+            )
     }
-
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
         if (validateCaptcha(user_captcha_value)) {
@@ -67,42 +68,35 @@ const Login = () => {
             <Helmet>
                 <title>Login | Champion's Development academy</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200 dark:bg-black dark:text-white">
-                <div className="md:hero-content md:w-[60%] flex-col">
-                    <div className="text-center ">
-                    </div>
-                    <h1 className="md:text-5xl text-lg my-4 font-bold">Login now!</h1>
-                    <div className="card dark:border-2 shadow-2xl bg-slate-300 dark:bg-black dark:text-white md:w-[99%] w-[60%]">
-                        <form onSubmit={handleLogin} className="md:card-body w-[90%]">
-                            <div className="form-control">
+            <div style={{ backgroundImage: 'url("https://wallpaperaccess.com/full/2140.jpg")' }} className="bg-center bg-cover min-h-screen bg-black bg-opacity-85 ">
+                <div className="md:hero-content md:w-[60%] mx-auto flex flex-col items-center justify-center h-screen">
+                    <h1 className="md:text-xl w-full md:w-[72%] bg-sky-600 font-semibold py-2 text-white"><span className='bg-red-700 px-4 me-4'> </span> Login</h1>
+                    <div className="md:card py-2 mx-auto text-white md:w-[90%] w-full">
+                        <form onSubmit={handleLogin} className="md:px-8 px-2 py-4 rounded-xl w-[80%]  mt-[-8px]  bg-gradient-to-t from-zinc-700 shadow-xl">
+                            <div className="form-control space-y-0 mt-[-4px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Email</span>
+                                    {/* <span className="label-text dark:text-white">Email</span> */}
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email" name="email" placeholder="Email" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                             </div>
-                            <div className="form-control">
+                            <div className="form-control space-y-0 mt-[-12px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Password</span>
+                                    {/* <span className="label-text dark:text-white">Password</span> */}
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                                {/* <label className="label">
-                                    <a href="#" className="label-text dark:text-white-alt link link-hover">Forgot password?</a>
-                                </label> */}
+                                <input type="password" name="password" placeholder="Password" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <LoadCanvasTemplate />
+                            <div className="form-control space-y-0 mt-[-12px]">
+                                <label className="label text-xs md:text-md">
+                                    <LoadCanvasTemplate reloadColor="red" />
                                 </label>
-                                <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
-
+                                <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="Type the Captcha Above" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                             </div>
-                            {/* TODO: make button disabled for captcha */}
-                            <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary text-lg" type="submit" value="Login" />
+                            <div className="form-control space-y-0 mt-2">
+                                <input disabled={false} className="btn md:btn-md btn-sm bg-gradient-to-r from-red-400 to-blue-400 text-sm md:text-md" type="submit" value="Login" />
                             </div>
+                            <p className='space-y-0 py-2 mx-auto mt-[-8px] text-white text-sm md:text-md'>New Here? <Link to="/registration"><span className='text-blue-500 text-md'>Create an account</span></Link> </p>
+                            <div className='mx-auto'><SocialLogin></SocialLogin></div>
                         </form>
-                        <p className='px-4 pb-2 text-lg '>New Here? <Link to="/registration"><span className='text-blue-700 text-xl'>Create an account</span></Link> </p>
-                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

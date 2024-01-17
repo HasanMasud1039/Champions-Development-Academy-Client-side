@@ -19,7 +19,7 @@ const PopularClass = () => {
                         <h2 className="card-title">Basketball!</h2>
                         <p> Do You Like It?</p>
                         <div className="card-actions justify-end">
-                            <button className="btn md:btn-lg btn-sm text-white font-bold md:text-lg bg-fuchsia-600 mt-8 btn-secondary"><Link to='/allClasses'>BUY NOW</Link></button>
+                            <button className="btn p-2 btn-sm text-white font-bold  bg-orange-600 mt-8 btn-error"><Link to='/allClasses'>Select now</Link></button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ const PopularClass = () => {
                         <h2 className="card-title">Football!</h2>
                         <p> Do You Like It?</p>
                         <div className="card-actions justify-end">
-                        <button className="btn md:btn-lg btn-sm text-white font-bold md:text-lg bg-fuchsia-600 mt-8 btn-secondary"><Link to='/allClasses'>BUY NOW</Link></button>
+                                                    <button className="btn p-2 btn-sm text-white font-bold  bg-orange-600 mt-8 btn-error"><Link to='/allClasses'>Select now</Link></button>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ const PopularClass = () => {
                         <h2 className="card-title">Cricket!</h2>
                         <p> Do You Like It?</p>
                         <div className="card-actions justify-end">
-                        <button className="btn md:btn-lg btn-sm text-white font-bold md:text-lg bg-fuchsia-600 mt-8 btn-secondary"><Link to='/allClasses'>BUY NOW</Link></button>
+                                                    <button className="btn p-2 btn-sm text-white font-bold  bg-orange-600 mt-8 btn-error"><Link to='/allClasses'>Select now</Link></button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const PopularClass = () => {
                         <h2 className="card-title">Archery</h2>
                         <p> Do You Like It?</p>
                         <div className="card-actions justify-end">
-                        <button className="btn md:btn-lg btn-sm text-white font-bold md:text-lg bg-fuchsia-600 mt-8 btn-secondary"><Link to='/allClasses'>BUY NOW</Link></button>
+                                                    <button className="btn p-2 btn-sm text-white font-bold  bg-orange-600 mt-8 btn-error"><Link to='/allClasses'>Select now</Link></button>
                         </div>
                     </div>
                 </div>

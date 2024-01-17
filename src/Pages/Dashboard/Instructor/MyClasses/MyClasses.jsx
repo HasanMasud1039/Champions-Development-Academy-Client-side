@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAuth from '../../../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
+import DataTable, { createTheme } from 'react-data-table-component';
+import { Toaster } from 'react-hot-toast';
 
 const MyClasses = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user, loading } = useAuth();
+    const [search, setSearch] = useState('');
+    const [filter, setFilter] = useState([]);
 
     const { data: classes = [], refetch } = useQuery({
         enabled: !loading,
@@ -17,11 +21,143 @@ const MyClasses = () => {
             const res = await axiosSecure.get(
                 `/users/instructor/class/${user.email}`
             );
+            setFilter(res.data);
             return res.data;
         },
     });
+    useEffect(() => {
+        const result = classes.filter((item) => {
+            return item?.className.toLowerCase().match(search.toLocaleLowerCase());
+        })
+        setFilter(result);
+    }, [search])
+    const columns = [
+        {
+            name: <p className='text-xs'>#</p>,
+            selector: (row, index) => index + 1,
+            sortable: true,
+            width: '6%',
+        },
+        {
+            name: <p className='text-xs'>IMAGE</p>,
+            sortable: true,
+            cell: (row) => (
+                <div className="">
+                    <img src={row.classImage} alt="" />
+                </div>
+            )
+        },
+        {
+            name: <p className='text-xs'>TITLE</p>,
+            // width: '25%',
+            cell: (row) => (
+                <p className='text-sm'>{row.className}</p>
+            )
+        },
+        {
+            name: <p className='text-xs'>AVAILABLE SEATS</p>,
+            // width: '15%',
+            cell: (row) => (
+                <p>{row.availableSeats}</p>
+            )
+        },
+        {
+            name: <p className='text-xs'>PRICE</p>,
+            // width: '15%',
+            cell: (row) => (
+                <p>{row.price}</p>
+            ),
+        },
+        {
+            name: <p className='text-xs'>ENROLLED</p>,
+            // width: '10%',
+            cell: (row) => (
+                <p>{row.enrolledStudents}</p>
+            ),
+        },
+        {
+            name: <p className='text-xs'>STATUS</p>,
+            // width: '15%',
+            cell: (row) => (
+                <td>
+                    {
+                        row.Status == 'approved' ?
+                            <button className='btn btn-success btn-sm'>{row?.Status}</button>
+                            : row.Status == 'denied' ?
+                                <button className='btn btn-error btn-sm'>{row?.Status}</button> :
+                                <button className='btn btn-warning btn-sm'>pending</button>
+                    }
+                </td>
+            ),
+        },
+        {
+            name: <p className='text-xs'>ACTION</p>,
+            // width: '10%',
+            cell: (row) => (
+                <td className='mx-auto'>
+                    <button onClick={() => handleRemoveClass(row._id)} disabled={row?.Status === 'approved'} className="btn bg-red-600 md:btn-md btn-sm md:text-2xl text-xl text-white"><FaTrash /></button>
+                </td>
+            ),
+        },
+    ];
+    const customStyles = {
+        table: {
+            style: {
+                overflow: true,
+            },
+        },
+        rows: {
+            style: {
+                minHeight: '80px',
+                fontSize: '14px',
+                padding: '8px'
+            },
+        },
+        headCells: {
+            style: {
+                padding: '10px',
+                backgroundColor: 'white',
+                fontSize: '20px',
+                fontWeight: 'bold'
+            },
+        },
+        cells: {
+            style: {
+                padding: '5px',
+                fontSize: '18px'
+            },
+        },
 
-    console.log(classes);
+        pagination: {
+            style: {
+                padding: '2px 25px',
+                display:'flex',
+                justifyContent: 'center'
+            }
+        },
+
+    };
+    createTheme('solarized', {
+        text: {
+            primary: '#268bd2',
+            secondary: '#2aa198',
+        },
+        background: {
+            default: '#002b36',
+        },
+        context: {
+            background: '#cb4b16',
+            text: '#FFFFFF',
+        },
+        divider: {
+            default: '#073642',
+        },
+        action: {
+            button: 'rgba(0,0,0,.54)',
+            hover: 'rgba(0,0,0,.08)',
+            disabled: 'rgba(0,0,0,.12)',
+        },
+    }, 'dark');
 
     const handleRemoveClass = (id) => {
 
@@ -53,68 +189,44 @@ const MyClasses = () => {
         })
 
     }
+    const paginationComponentOptions = {
+        rowsPerPageText: 'Rows per page:', // Text displayed before the rows per page select field
+        rangeSeparatorText: 'of', // Text displayed between the page range
+        selectAllRowsItem: true, // Display an option to select all rows
+        selectAllRowsItemText: 'All', // Text displayed for the "Select All" option
+        noRowsPerPage: true, // Do not display the rows per page options if there is only one page
+      };
 
     return (
-        <div className="md:w-full w-[55%] overflow-x-auto md:overflow-x-hidden ">
+        <div>
             <Helmet>
                 <title>My Classes | Champion's Development academy</title>
             </Helmet>
-            <h1 className="md:text-4xl dark:text-white text-lg md:text-center md:font-bold font-semibold mb-5 mt-5 uppercase">my Classes</h1>
-            <div className="md:w-full w-[90%] dark:bg-black dark:text-white">
-                <table className="table light:table-zebra table-xs md:table-lg rounded-2xl">
-                    {/* head */}
-                    <thead className="mb-8  bg-slate-300 dark:bg-black dark:text-white rounded-t-xl">
-                        <tr className='uppercase md:text-md text-xs'>
-                            <th>#</th>
-                            <th>Class Image</th>
-                            <th>Class Name</th>
-                            <th> Seats</th>
-                            <th>Price</th>
-                            <th>Enrolled</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className='bg-red-100 dark:bg-black dark:text-white'>
-                        {classes.map((myClass, index) => (
-                            <tr key={myClass._id}>
-                                <th>{index + 1}</th>
-                                <td>
-                                    <div className="">
-                                        <img src={myClass.classImage} alt="" />
-                                    </div>
-                                </td>
-                                <td>
-                                    {myClass.className}
+            <h1 className="animate__rubberBand animate__animated bg-red-700 px-4 py-2 md:text-xl dark:text-white text-lg font-semibold mb-5 mt-5 uppercase"><span className="border-cyan-400 border-4 me-4" />my Classes</h1>
 
-                                </td>
-                                <td>
-                                    {myClass.availableSeats}
-                                </td>
-                                <td>
-                                    {myClass.price}
-                                </td>
-                                <td>
-                                    {myClass.enrolledStudents}
-                                </td>
-                                <td>
-                                    {
-                                        myClass.Status == 'approved' ?
-                                            <button className='btn btn-success md:btn-md btn-sm '>{myClass?.Status}</button>
-                                            : myClass.Status == 'denied' ?
-                                                <button className='btn btn-error md:btn-md btn-sm '>{myClass?.Status}</button> :
-                                                <button className='btn btn-warning'>pending</button>
-                                    }
-                                </td>
-                                <td>
-
-                                    <button onClick={() => handleRemoveClass(myClass._id)} disabled={myClass?.Status === 'approved'} className="btn bg-red-600 md:btn-md btn-sm md:text-3xl text-xl text-white"><FaTrash /></button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className=" dark:bg-black dark:text-white overflow-auto md:w-full w-[65%]">
+                <DataTable
+                    columns={columns}
+                    data={filter}
+                    customStyles={customStyles}
+                    theme="solarized"
+                    pagination
+                    paginationComponentOptions={paginationComponentOptions}
+                    highlightOnHover
+                    subHeader
+                    subHeaderAlign='left'
+                    subHeaderComponent={
+                        <input
+                            type='text'
+                            className='form-control h-8 md:w-[25%] w-[35%]'
+                            placeholder='Search...'
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                    }
+                />
             </div>
+            <Toaster></Toaster>
         </div>
     );
 };

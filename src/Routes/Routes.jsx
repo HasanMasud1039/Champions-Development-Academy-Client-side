@@ -23,6 +23,11 @@ import UserHome from "../Pages/Dashboard/User/UserHome/UserHome";
 import InstructorHome from "../Pages/Dashboard/Instructor/InstructorHome/InstructorHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import InstructorRoute from "./InstructorRoute";
+import About from "../Pages/About/About";
+import SuperAdminRoute from "./SuperAdminRoute";
+import SuperAdminUsers from "../Pages/Dashboard/SuperAdmin/SuperAdminUsers";
+import SuperAdminClasses from "../Pages/Dashboard/SuperAdmin/SuperAdminClasses";
+import SuperAdminHome from "../Pages/Dashboard/SuperAdmin/SuperAdminHome";
 
 
 const router = createBrowserRouter([
@@ -34,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/about",
+        element: <About/>,
       },
       {
         path: "/registration",
@@ -67,6 +76,30 @@ const router = createBrowserRouter([
       {
         path: "/dashboard", // Update the path to be relative
         element: <WelcomeHome></WelcomeHome>,
+      },
+      {
+        path: "SuperUsers", // Update the path to be relative
+        element: (
+          <SuperAdminRoute>
+            <SuperAdminUsers/>
+          </SuperAdminRoute>
+        ),
+      },
+      {
+        path: "SuperClasses",
+        element: (
+          <SuperAdminRoute>
+            <SuperAdminClasses/>
+          </SuperAdminRoute>
+        ),
+      },
+      {
+        path: "SuperAdminHome",
+        element: (
+          <SuperAdminRoute>
+          <SuperAdminHome/>
+        </SuperAdminRoute>
+        ),
       },
       {
         path: "manageUsers", // Update the path to be relative

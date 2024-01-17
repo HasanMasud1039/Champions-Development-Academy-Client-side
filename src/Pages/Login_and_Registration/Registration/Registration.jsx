@@ -1,14 +1,10 @@
-
 import { useContext } from "react";
-
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet";
-
 
 const Registration = () => {
 
@@ -61,70 +57,68 @@ const Registration = () => {
             <Helmet>
                 <title>Registration | Champion's Development academy</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200 dark:bg-black dark:text-white p-2">
-                <div className="md:hero-content flex-col p-2">
-                    <div className="md:text-center lg:text-left">
-                        <h1 className="md:text-5xl text-2xl py-3 font-bold">Sign up now!</h1>
-                    </div>
-                    <div className="card md:flex-shrink-0 md:w-full w-[60%] dark:border-2 dark:bg-black dark:text-white shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="md:card-body p-4 w-[90%]">
-                            <div className="form-control">
+            <div style={{ backgroundImage: 'url("https://wallpaperaccess.com/full/2140.jpg")' }} className="bg-center bg-cover min-h-screen bg-black bg-opacity-85 ">
+                <div className="md:hero-content flex-col md:p-2">
+                    <h1 className="md:text-xl md:w-[55%] bg-sky-600 font-semibold py-2 text-white"><span className='bg-red-700 px-4 me-4'> </span> Sign Up</h1>
+                    <div className="md:card dark:border-2 py-4 md:px-0 px-2  mx-auto dark:text-white md:w-[55%] w-[80%]  bg-gradient-to-t from-zinc-700 shadow-xl">
+                        <form onSubmit={handleSubmit(onSubmit)} className=" py-2 rounded-xl my-[-6px] ">
+                            <div className="form-control space-y-0 mt-[-4px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Name</span>
+                                    <span className="label-text text-white">Name<span className='text-lg text-red-600'> *</span></span>
                                 </label>
-                                <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
+                                <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control space-y-0 mt-[-10px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Photo URL</span>
+                                    <span className="label-text text-white">Photo URL<span className='text-lg text-red-600'> *</span></span>
                                 </label>
-                                <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                                <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control form-control space-y-0 mt-[-12px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Email</span>
+                                    <span className="label-text text-white">Email<span className='text-lg text-red-600'> *</span></span>
                                 </label>
-                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="Email" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control form-control space-y-0 mt-[-12px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Contact No.(Optional)</span>
+                                    <span className="label-text text-white">Contact No.(Optional)</span>
                                 </label>
-                                <input type="text"  {...register("contact")} name="contact" placeholder="Contact No." className="input input-bordered" />
+                                <input type="text"  {...register("contact")} name="contact" placeholder="Contact No." className="input input-bordered md:input-md input-sm text-xs md:text-md" />
 
                             </div>
-                            <div className="form-control">
+                            <div className="form-control form-control space-y-0 mt-[-12px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Address(Optional)</span>
+                                    <span className="label-text text-white">Address(Optional)</span>
                                 </label>
-                                <input type="text"  {...register("address")} name="address" placeholder="Address" className="input input-bordered" />
+                                <input type="text"  {...register("address")} name="address" placeholder="Address" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
 
                             </div>
-                            <div className="form-control">
+                            <div className="form-control form-control space-y-0 mt-[-12px]">
                                 <label className="label">
-                                    <span className="label-text dark:text-white">Password</span>
+                                    <span className="label-text text-white">Password<span className='text-lg text-red-600'> *</span></span>
                                 </label>
                                 <input type="password"  {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
                                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                })} placeholder="password" className="input input-bordered" />
+                                })} placeholder="password" className="input input-bordered md:input-md input-sm text-xs md:text-md" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
 
                             </div>
-                            <div className="form-control mt-6">
-                                <input className="btn btn-primary text-lg" type="submit" value="Sign Up" />
+                            <div className="form-control form-control space-y-0 mt-2">
+                                <input className="btn md:btn-md btn-sm bg-gradient-to-r from-red-400 to-blue-400 text-sm md:text-md" type="submit" value="Sign Up" />
                             </div>
+                            <p className="space-y-0 py-2 mx-auto mt-[-8px] text-white text-sm md:text-md">Already have an account? <span className="text-blue-500"> <Link to="/login">Login</Link></span></p>
+                            <div className="mx-auto"><SocialLogin></SocialLogin></div>
                         </form>
-                        <p className="ps-5 mb-4 text-lg">Already have an account? <span className="text-blue-600 text-xl"> <Link to="/login">Login</Link></span></p>
-                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

@@ -25,9 +25,8 @@ const Payment = () => {
       <Helmet>
         <title>Payment | Champion's Development academy</title>
       </Helmet>
-      <h1 className="text-2xl dark:text-white uppercase font-semibold text-center">
-        please make payment
-      </h1>
+      <h1 className="animate__rubberBand animate__animated bg-red-700 px-4 py-2 md:text-xl dark:text-white text-lg font-semibold mb-5 mt-5 uppercase"><span className="border-cyan-400 border-4 me-4" />make Payment</h1>
+
       <div className="w-full">
         <Elements stripe={stripePromise}>
 

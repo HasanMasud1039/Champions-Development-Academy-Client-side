@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet";
+import DataTable, { createTheme } from 'react-data-table-component';
 
 
 const PaymentHistory = () => {
@@ -17,43 +18,136 @@ const PaymentHistory = () => {
       },
     }
   );
-  console.log(paymentHistoryData);
+  const columns = [
+    {
+      name: '#',
+      selector: (row, index) => index + 1,
+      sortable: true,
+      width: '8%',
+    },
+    {
+      name: 'TRANSACTION ID',
+      width: '35%',
+      cell: (row) => (
+        <td>{row.transaction_id}</td>
+      )
+    },
+    {
+      name: 'PAID AMOUNT',
+      width:'15%',
+      sortable: true,
+      cell: (row) => (
+        <td >$ {row.pay / 100}</td>
+      )
+    },
+    {
+      name: 'STATUS',
+      width:'15%',
+      cell: (row) => (
+        <td className="text-green-600 font-bold">{row.status}</td>
+      )
+    },
+    {
+      name: 'DATE & TIME',
+      cell: (row) => (
+        <td>{row.Date}</td>
+      ),
+
+    },
+  ];
+  const customStyles = {
+    table: {
+      style: {
+        overflow: true,
+      },
+    },
+    rows: {
+      style: {
+        minHeight: '80px',
+        fontSize: '16px',
+        padding: '10px'
+      },
+    },
+    headCells: {
+      style: {
+        padding: '10px',
+        backgroundColor: 'white',
+        fontSize: '14px',
+        fontWeight: 'bold'
+      },
+    },
+    cells: {
+      style: {
+        padding: '5px',
+        fontSize: '18px'
+      },
+    },
+    pagination: {
+      style: {
+        backgroundColor: 'gray',
+        color: 'blue',
+      },
+      pageButtonsStyle: {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+      pageButtonsActiveStyle: {
+        backgroundColor: 'lightblue',
+        color: 'darkblue',
+      },
+      pageButtonsDisabledStyle: {
+        backgroundColor: 'lightgray',
+        color: 'gray',
+      },
+      pageButtonsHoverStyle: {
+        backgroundColor: 'gray',
+        color: 'darkblue',
+      },
+      currentPageStyle: {
+        backgroundColor: 'red',
+        color: 'darkblue',
+        border:'2px solid red'
+      },
+      pageSizeOptionsStyle: {
+        backgroundColor: 'red', // Set the background color to red
+        color: 'white',
+        border:'4px solid red'
+      },
+    },
+  }
+  createTheme('solarized', {
+    text: {
+      primary: '#268bd2',
+      secondary: '#2aa198',
+    },
+    background: {
+      default: '#002b39',
+    },
+    context: {
+      background: '#cb4b16',
+      text: '#FFFFFF',
+    },
+    divider: {
+      default: 'black',
+    },
+    
+  }, 'dark');
   return (
-    <div className="md:w-full w-[50%] overflow-x-auto md:overflow-x-hidden ">
+    <div className=" overflow-x-auto md:overflow-x-hidden ">
       <Helmet>
         <title>Payment History | Champion's Development academy</title>
       </Helmet>
-      <div>
-        <h1 className="md:text-4xl text-lg md:text-center dark:text-white md:font-bold font-semibold mb-5 mt-5 uppercase"> payment history</h1>
-      </div>
-      <div className="md:w-full w-[99%]">
-        <table className="table  dark:bg-black dark:text-white light:table-zebra table-xs md:table-md">
-          {/* head */}
-          <thead className="mb-8 bg-lime-100 dark:bg-slate-600  dark:text-white rounded-t-2xl">
-            <tr className='uppercase md:text-md text-xs py-2'>
-              <th>#</th>
-              <th>transaction_id</th>
-              <th>Payed Amount</th>
-              <th>currency</th>
-              <th>status</th>
-              <th>Payer email</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody className="  bg-red-100 dark:bg-black dark:text-white rounded-2xl ">
-            {paymentHistoryData.map((payHis, index) => (
-              <tr key={payHis._id}>
-                <th>{index + 1}</th>
-                <td>{payHis.transaction_id}</td>
-                <td className="text-right">$ {payHis.pay / 100}</td>
-                <td>{payHis.currency}</td>
-                <td className="text-green-600 font-bold">{payHis.status}</td>
-                <td>{payHis.email}</td>
-                <td>{payHis.Date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <h1 className="animate__rubberBand animate__animated bg-red-700 px-4 py-2 md:text-xl dark:text-white text-lg font-semibold mb-5 mt-5 uppercase"><span className="border-cyan-400 border-4 me-4" />payment history</h1>
+      <div className="overflow-auto md:w-full w-[65%]">
+        <DataTable
+          columns={columns}
+          data={paymentHistoryData}
+          customStyles={customStyles}
+          theme="solarized"
+          pagination
+          paginationPosition="left"
+          highlightOnHover
+        />
       </div>
     </div>
 

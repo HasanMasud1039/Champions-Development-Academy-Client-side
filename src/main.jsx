@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <div className='md:max-w-screen-2xl  overflow-x-hidden md:mx-auto  dark:bg-black'>
+        <div className='md:max-w-screen-xl overflow-x-hidden md:mx-auto  dark:bg-black'>
           <React.StrictMode>
             <RouterProvider router={router} />
           </React.StrictMode>

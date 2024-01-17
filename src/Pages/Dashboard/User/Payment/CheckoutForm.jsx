@@ -102,7 +102,7 @@ const CheckoutForm = () => {
     // setProcessing(true);
     if (paymentIntent.status == "succeeded") {
       setSucceeded(
-        `Payment completed successfully & Your Transaction Id :${paymentIntent.id}`
+        `${paymentIntent.id}`
       );
       const transactionId = paymentIntent.id;
       ///payments information saved in database
@@ -176,7 +176,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div className="mt-6 border-4 bg-cyan-100">
+    <div className="mt-6 border-2 dark:bg-cyan-800 bg-cyan-500">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -204,7 +204,10 @@ const CheckoutForm = () => {
         </button>
       </form>
       {cardError && <p className="text-red-500 text-2xl p-4 text-center">{cardError}</p>}
-      {succeeded && <p className="text-green-500 text-2xl p-4 text-center">{succeeded}</p>}
+      {succeeded && <div>
+        <p className="text-lime-200 text-2xl p-4 text-center">Payment Completed Successfully.</p>
+        <p className="text-lime-200 text-xl p-4 text-center"> Your Transaction Id :<span className="text-red-400"> {succeeded}</span></p>
+      </div> }
     </div>
   );
 };

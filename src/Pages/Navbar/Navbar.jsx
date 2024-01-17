@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { FaUser, FaUserAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaChalkboardTeacher, FaHome, FaListAlt, FaMoon, FaSlidersH, FaSun, FaUser, FaUserAlt } from 'react-icons/fa';
+import { IoIosLogOut } from "react-icons/io";
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import { useEffect } from 'react';
 import { useState } from 'react';
-// import navImage from '../../../public/CDA33.PNG'
+import navImage from '../../assets/spo.png'
+import './Navbar.css'
 
 const Navbar = () => {
 
@@ -38,94 +40,118 @@ const Navbar = () => {
         }
     }, [theme]);
 
-    const handleThemeSwitch = () => {
-        console.log("clicked")
-        setTheme(theme === "dark" ? "light" : "dark");
+    const handleThemeLight = () => {
+        setTheme(theme === "dark" ? "light" : "light");
+    };
+    const handleThemeDark = () => {
+        setTheme(theme === "light" ? "dark" : "dark");
     };
 
 
-    return (
-        <div>
 
-            <div className="navbar md:bg-base-100 bg-black dark:bg-slate-900 dark:text-white text-white md:text-black">
-                <div className="navbar-start">
+    return (
+        <div className='relative'>
+            <div className="navbar py-2 md:h-[90px] bg-[#1F2764] md:bg-white md:dark:bg-slate-800 dark:text-white text-white md:text-black">
+                <div className="navbar-start w-[20%] ms-[-8px]">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost btn-xl lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <div className=' text-2xl font-serif text-slate-600 className="dropdown dropdown-end w-[80%] space-y-2  justify-end"'>
-                                <li><Link to='/'>Home</Link></li>
-                                <li><Link to='/allClasses'>Classes</Link></li>
-                                <li><Link to='/instructors'>Instructors</Link></li>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 bg-opacity-90 rounded-box w-40">
+                            <div className=' text-2xl space-y-2  font-serif text-black font-bold'>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "active" : ""} to='/'><FaHome />Home</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "active" : ""} to='/about'><FaHome />About</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "active" : ""} to='/allClasses'><FaListAlt />Classes</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "active" : ""} to='/instructors'><FaChalkboardTeacher />Instructors</NavLink></li>
                                 {
                                     user ?
-                                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                                        <>
+                                            <li><NavLink to='/dashboard'><FaSlidersH /> Dashboard</NavLink></li>
+                                            <li><a onClick={handleLogOut}><IoIosLogOut /> Logout</a></li></>
+
                                         : <></>
                                 }
-                                <div className='flex gap-2  rounded-3xl ms-4  text-sm hover:text-red-400  '>Dark
-                                    <input role='switch' id='black' defaultChecked onClick={handleThemeSwitch} type="checkbox" className="toggle toggle-md px-4 " />
+                                <div className='flex gap-2  rounded-3xl ms-4  text-sm hover:text-red-400  '>
+                                    {
+                                        theme == "dark" ?
+                                            <FaSun className='md:text-3xl text-yellow-500 text-lg' onClick={handleThemeLight} type="checkbox" />
+                                            :
+                                            <FaMoon className='md:text-3xl text-black text-lg' onClick={handleThemeDark} type="checkbox" />
+                                    }
                                 </div>
                             </div>
                         </ul>
                     </div>
-                    <div className=" border-3 w-full ">
-                        <img className=' h-20 w-[80%] md:block hidden' src='https://i.ibb.co/s2fFzMH/CDA33.png' alt="" />
-                        <p className='p-3  font-serif text-sm text-center font-semibold block md:hidden'>Champion's Development Academy</p>
-
-
-                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 border-2 px-6 pt-4 dark:bg-black dark:text-white bg-cyan-100 rounded-t-3xl">
-                        <div className=' text-2xl font-serif text-slate-600  flex justify-evenly gap-4 '>
-                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/'>Home</Link></a>
-                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/allClasses'>Classes</Link></a>
-                            <a className='rounded-2xl  hover:text-red-400  '><Link to='/instructors'>Instructors</Link></a>
+                <div className="w-full">
+                    <img className=' h-18 w-[60%] MS md:block hidden' src='https://i.ibb.co/LY0T3Wj/CDA33-prev-ui.png' alt="" />
+                    <p className='p-2  font-serif text-sm text-center font-semibold block md:hidden dark:text-[#B7F8F1]'>Champion's Development Academy</p>
+
+
+                </div>
+                <div className="navbar-end justify-end ">
+                    <ul className="menu menu-horizontal px-8 pt-2 hidden lg:flex dark:text-white">
+                        <div className=' text-xl font-serif text-slate-500  flex justify-evenly gap-4 '>
+                            <a className='rounded-2xl  hover:text-red-400  '><NavLink to='/' className={({ isActive }) =>
+                                isActive ? "active" : ""}>Home</NavLink></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><NavLink to='/about' className={({ isActive }) =>
+                                isActive ? "active" : ""}>About</NavLink></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><NavLink to='/allClasses' className={({ isActive }) =>
+                                isActive ? "active" : ""}>Classes</NavLink></a>
+                            <a className='rounded-2xl  hover:text-red-400  '><NavLink to='/instructors' className={({ isActive }) =>
+                                isActive ? "active" : ""}>Instructors</NavLink></a>
                             {
                                 user ?
-                                    <a className=' hover:text-red-400 '><Link to='/dashboard'>Dashboard</Link></a>
+                                    <a className=' hover:text-red-400 '><NavLink to='/dashboard' className={({ isActive }) =>
+                                        isActive ? "active" : ""}>Dashboard</NavLink></a>
                                     : <></>
                             }
-                            <div className='flex gap-2  rounded-3xl ms-4  hover:text-red-400  '>Dark
-                                <input role='switch' id='black' defaultChecked onClick={handleThemeSwitch} type="checkbox" className="toggle px-4 " />
+                            <div className='flex gap-2  rounded-3xl ms-4  hover:text-red-400  '>
+                                {
+                                    theme == "dark" ?
+                                        <FaSun className='md:text-3xl text-yellow-500 text-lg' onClick={handleThemeLight} type="checkbox" />
+                                        :
+                                        <FaMoon className='md:text-3xl text-black text-lg' onClick={handleThemeDark} type="checkbox" />
+                                }
                             </div>
                         </div>
                     </ul>
-                </div>
-                <div className="navbar-end">
-                    <div className="dropdown dropdown-end md:pe-4">
-                        <label tabIndex={0} className="btn-lg btn-info btn-outline btn-circle avatar ">
-                            <div className="text-6xl border-4 dark:text-white  text-slate-400 rounded-full">
-
-                                {
-                                    user?.email ? <img src={user.photoURL} alt="USER" />
-                                        : <Link to='/login'><FaUserAlt></FaUserAlt></Link>
-                                }
-                            </div>
-                        </label>
-                        {
-                            user ?
-                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-black shadow bg-base-100 rounded-box w-52">
-
+                    <div className="navbar flex justify-end w-[15%]">
+                        <div className="dropdown dropdown-end md:pe-4">
+                            <label tabIndex={0} className="md:btn-lg btn-info btn-outline btn-circle avatar ">
+                                <div className="md:text-6xl text-5xl md:border-4 border-2 dark:text-white  text-slate-900 rounded-full">
                                     {
-                                        isAdmin ? <>
-
-                                            <li><Link to='/dashboard/adminHome'>My Profile</Link></li>
-                                            <li><Link to='/dashboard/adminHome'>Edit Profile</Link></li>
-                                        </> :
-                                            isInstructor ? <>
-                                                <li><Link to='/dashboard/instructorHome'>My Profile</Link></li>
-                                                <li><Link to='/dashboard/instructorHome'>Edit Profile</Link></li>
-                                            </>
-                                                : <>
-                                                    <li><Link to='/dashboard/userHome'>My Profile</Link></li>
-                                                    <li><Link to='/dashboard/userHome'>Edit Profile</Link></li>
-                                                </>
+                                        user?.email ? <img src={user.photoURL} alt="USER" />
+                                            : <NavLink to='/login'><FaUserAlt className='text-slate-400 hover:bg-cyan-500'></FaUserAlt></NavLink>
                                     }
-                                    <li><a onClick={handleLogOut}>Logout</a></li>
-                                </ul> : <></>
-                        }
+                                </div>
+                            </label>
+                            {
+                                user ?
+                                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white z-[1]  p-2 text-black shadow  rounded-box md:w-52 w-48 absolute top-0 right-30 opacity-25">
+                                        {
+                                            isAdmin ? <>
+
+                                                <li><NavLink to='/dashboard/adminHome'>My Profile</NavLink></li>
+                                                <li><NavLink to='/dashboard/adminHome'>Edit Profile</NavLink></li>
+                                            </> :
+                                                isInstructor ? <>
+                                                    <li><NavLink to='/dashboard/instructorHome'>My Profile</NavLink></li>
+                                                    <li><NavLink to='/dashboard/instructorHome'>Edit Profile</NavLink></li>
+                                                </>
+                                                    : <>
+                                                        <li><NavLink to='/dashboard/userHome'>My Profile</NavLink></li>
+                                                        <li><NavLink to='/dashboard/userHome'>Edit Profile</NavLink></li>
+                                                    </>
+                                        }
+                                        <li><a onClick={handleLogOut}>Logout</a></li>
+                                    </ul> : <></>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

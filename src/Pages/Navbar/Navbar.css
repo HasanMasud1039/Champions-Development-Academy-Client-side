@@ -1,0 +1,13 @@
+.active{
+    color: red;
+    border-bottom: 2px solid cyan;
+    padding: 5px;
+    /* background: linear-gradient( rgb(183, 229, 248), rgb(224, 225, 230)); */
+}
+
+@media (max-width: 767px) {
+    .active {
+        color: black;
+        background: transparent;
+    }
+}
