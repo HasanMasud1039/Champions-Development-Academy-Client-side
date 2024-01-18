@@ -70,13 +70,13 @@ const SocialLogin = () => {
 
     return (
         <div className="space-y-0">
-            <p className="md:text-md text-sm text-white font-semibold md:font-semibold">Or Login With</p>
+            <p className=" text-sm text-white font-semibold">Or Login With</p>
             <div className="w-full border-0 py-1 rounded-2xl text-center   md:gap-6 gap-0 md:flex justify-evenly">
-                <button onClick={handleGoogleSignIn} className="btn md:btn-md btn-sm btn-outline  bg-red-600">
-                    <p className=" md:px-4 px-2 py-2 text-white flex items-center gap-4">Login with <FaGoogle className="md:text-2xl"/></p>
+                <button onClick={handleGoogleSignIn} className="btn btn-sm btn-outline  bg-red-600">
+                    <p className=" md:px-2 px-2 py-1 text-white flex items-center gap-4">Login with <FaGoogle/></p>
                 </button>
-                <button onClick={handleFacebookLogin} className="btn bg-blue-600 md:btn-md btn-sm btn-outline ">
-                    <p className=" md:px-4 px-2 py-2 text-white flex items-center gap-4">Login with <FaFacebook className="md:text-3xl"/></p>
+                <button onClick={handleFacebookLogin} className="btn bg-blue-600 btn-sm btn-outline ">
+                    <p className=" md:px-2 px-2 py-1 text-white flex items-center gap-4">Login with <FaFacebook /></p>
                 </button>
             </div>
             <Toaster></Toaster>
