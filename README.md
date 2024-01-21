@@ -16,6 +16,6 @@ To access the admin panel, use the following credentials:
 ## Server Side Repository
 
 Explore the server-side code in the following repository:
-- [Champions Development Academy Client Side](https://github.com/HasanMasud1039/Champions-Development-Academy-Server)
+- [Champions Development Academy Server Side](https://github.com/HasanMasud1039/Champions-Development-Academy-Server)
 
 
